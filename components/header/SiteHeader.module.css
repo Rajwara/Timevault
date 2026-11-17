@@ -182,6 +182,10 @@
 @keyframes slideR { from { transform: translateX(100%); } to { transform: none; } }
 
 /* ---------- Responsive ---------- */
+/* Text links on the right only appear when there's room for them */
+.from1600, .from1800 { display: none; }
+@media (min-width: 1640px) { .from1600 { display: inline-flex; } }
+@media (min-width: 1800px) { .from1800 { display: inline-flex; } }
 .burger, .mobileOnly, .tabletOnly { display: none; }
 .desktopOnly { display: contents; }
 

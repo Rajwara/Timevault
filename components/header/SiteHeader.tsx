@@ -125,8 +125,8 @@ export default function SiteHeader() {
 
           {/* ---------- Right ---------- */}
           <div className={s.right}>
-            <Link href="/blog" className={`${s.textLink} ${s.hideXl}`} aria-current={pathname.startsWith("/blog") ? "page" : undefined}>Journal</Link>
-            <Link href="/contact" className={`${s.textLink} ${s.hideLg}`} aria-current={pathname === "/contact" ? "page" : undefined}>Stores &amp; Contact</Link>
+            <Link href="/blog" className={`${s.textLink} ${s.from1800}`} aria-current={pathname.startsWith("/blog") ? "page" : undefined}>Journal</Link>
+            <Link href="/contact" className={`${s.textLink} ${s.from1600}`} aria-current={pathname === "/contact" ? "page" : undefined}>Stores &amp; Contact</Link>
             <div className={s.searchInline}>{searchForm("header-search")}</div>
             <button type="button" className={`${s.iconBtn} ${s.searchToggle} ${s.tabletOnly}`} aria-label="Search" aria-expanded={searchOpen} onClick={() => setSearchOpen((o) => !o)}>
               <SearchIcon />
@@ -172,6 +172,7 @@ export default function SiteHeader() {
                       <li><Link href="/shop?wish=1" onClick={close}>Wishlist <span className={s.muted}>{store.wish.length}</span></Link></li>
                       <li><button type="button" onClick={() => { close(); bagRef.current?.showModal(); }}>Shopping bag <span className={s.muted}>{store.bag.length}</span></button></li>
                       <li><a href={`${contact}?subject=${encodeURIComponent("Order status")}`} onClick={close}>Track an order</a></li>
+                      <li><Link href="/contact" onClick={close}>Find a store</Link></li>
                       <li><Link href="/faq" onClick={close}>Help &amp; FAQ</Link></li>
                     </ul>
                   </div>

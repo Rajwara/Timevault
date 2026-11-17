@@ -19,8 +19,11 @@ export default function Collections() {
   const list = watches.filter((w) => tab === "all" || w.cat === tab);
 
   return (
-    <section className={s.panel} id="collections" aria-labelledby="collections-title">
-      <h2 id="collections-title" className={s.h2Center}>Explore Collections</h2>
+    <section className={`${s.panel} ${s.band}`} id="collections" aria-labelledby="collections-title">
+      <p className={`${s.label} ${s.labelCenter}`} data-reveal="">*The collection</p>
+      <h2 id="collections-title" className={s.h2Center} data-reveal="">
+        Explore Collections <span className={s.mutedDark}>for every wrist</span>
+      </h2>
 
       <div className={s.tabs} role="group" aria-label="Filter collections">
         {tabs.map((t) => (
@@ -44,8 +47,8 @@ export default function Collections() {
       </div>
 
       <div className={s.arrows}>
-        <button type="button" className={s.roundLight} aria-label="Scroll left" onClick={() => scrollRow(row.current, -1)}><ArrowLeft /></button>
-        <button type="button" className={s.roundDark} aria-label="Scroll right" onClick={() => scrollRow(row.current, 1)}><ArrowRight /></button>
+        <button type="button" className={s.sqLight} aria-label="Scroll left" onClick={() => scrollRow(row.current, -1)}><ArrowLeft /></button>
+        <button type="button" className={s.sqAccent} aria-label="Scroll right" onClick={() => scrollRow(row.current, 1)}><ArrowRight /></button>
       </div>
     </section>
   );

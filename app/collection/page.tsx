@@ -7,6 +7,7 @@ import Brands from "@/components/collection/Brands";
 import Arrivals from "@/components/collection/Arrivals";
 import Faq from "@/components/collection/Faq";
 import { faqs } from "@/lib/collection";
+import RevealObserver from "@/components/RevealObserver";
 import s from "./collection.module.css";
 
 export const metadata: Metadata = {
@@ -34,6 +35,7 @@ export default function CollectionPage() {
           <Arrivals />
           <Faq />
         </main>
+        <RevealObserver />
       </div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
     </CartProvider>

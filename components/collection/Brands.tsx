@@ -13,10 +13,13 @@ export default function Brands() {
 
   return (
     <section className={s.brands} id="brands" aria-labelledby="brands-title">
-      <h2 id="brands-title" className={s.h2Caps}>Shop Our Lines</h2>
-      <p className={s.sub}>Four families, one standard. Pick a line to see its signature pieces.</p>
+      <p className={`${s.label} ${s.labelCenter}`} data-reveal="">*Four families, one standard</p>
+      <h2 id="brands-title" className={s.h2Caps} data-reveal="">
+        <span>Shop our lines</span>
+        <span className={s.muted}>pick one to see its signature pieces.</span>
+      </h2>
 
-      <div className={s.brandsGrid}>
+      <div className={s.brandsGrid} data-reveal="">
         <div className={s.accordion}>
           {brands.map((b, i) => {
             const isOpen = open === i;

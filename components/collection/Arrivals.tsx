@@ -16,10 +16,13 @@ export default function Arrivals() {
   return (
     <section className={s.panel} id="arrivals" aria-labelledby="arrivals-title">
       <div className={s.arrivalsHead}>
-        <h2 id="arrivals-title" className={s.h2Left}>New Arrivals</h2>
+        <div>
+          <p className={s.label} data-reveal="">*Just landed</p>
+          <h2 id="arrivals-title" className={s.h2Left} data-reveal="">New Arrivals</h2>
+        </div>
         <div className={s.arrowsInline}>
-          <button type="button" className={s.roundLight} aria-label="Scroll left" onClick={() => scrollRow(row.current, -1)}><ArrowLeft /></button>
-          <button type="button" className={s.roundDark} aria-label="Scroll right" onClick={() => scrollRow(row.current, 1)}><ArrowRight /></button>
+          <button type="button" className={s.sqDark} aria-label="Scroll left" onClick={() => scrollRow(row.current, -1)}><ArrowLeft /></button>
+          <button type="button" className={s.sqAccent} aria-label="Scroll right" onClick={() => scrollRow(row.current, 1)}><ArrowRight /></button>
         </div>
       </div>
 
@@ -43,7 +46,7 @@ export default function Arrivals() {
       </div>
 
       <div className={s.center}>
-        <a href="#collections" className={s.btnDark}>View All Products</a>
+        <a href="/shop" className={s.btnDark}>View All Products</a>
       </div>
     </section>
   );

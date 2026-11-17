@@ -16,7 +16,10 @@ export default function Faq() {
   return (
     <section className={s.faq} id="faq" aria-labelledby="faq-title">
       <div className={s.faqSide}>
-        <h2 id="faq-title" className={s.h2Left}>Frequently<br />Asked<br />Questions</h2>
+        <div>
+          <p className={s.label} data-reveal="">*Good to know</p>
+          <h2 id="faq-title" className={s.h2Left} data-reveal="">Frequently<br />Asked<br />Questions</h2>
+        </div>
         <div className={s.helpCard}>
           <h3>Have more questions?</h3>
           <p>Our watch specialists reply within one business day.</p>
