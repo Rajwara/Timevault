@@ -91,6 +91,8 @@ export default function ExplodedWatch() {
         const [bx, by, bw, bh] = BOX[part.key];
         const x = (bx - PX) * k + part.ex * U * t, y = (by - PY) * k + part.ey * U * t, z = lerp(part.fz, part.ez, t) * (U / 232); // lift scales with the watch size (232px = desktop case)
         Object.assign(el.style, { width: bw * k + "px", height: bh * k + "px", transform: `translate3d(${x}px, ${y}px, ${z}px) rotateZ(${part.rot * t}deg)` });
+        // the tinted glass only appears once it has lifted off the dial
+        if (part.key === "crystal") el.style.opacity = String(range(t, 0.12, 0.45));
         // project the part's centre to the screen (same maths as the browser's perspective)
         const c = M.transformPoint(new DOMPoint(x + (bw * k) / 2, y + (bh * k) / 2, z));
         const vx = W / 2, vy = H * 0.45, f = PERSPECTIVE / (PERSPECTIVE - c.z);
@@ -98,7 +100,8 @@ export default function ExplodedWatch() {
       });
 
       // the untouched photo shows whenever the watch is (almost) whole
-      const ph = 1 - range(e, 0.004, 0.05);
+      // hold the untouched photo until the parts have clearly started to separate, then switch quickly (no washed-out mix)
+      const ph = 1 - range(e, 0.035, 0.07);
       photo.current!.style.opacity = String(ph);
       r.style.opacity = String(1 - ph);
       track.style.setProperty("--explode", e.toFixed(3));

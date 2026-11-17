@@ -223,25 +223,29 @@ img { display: block; max-width: 100%; }
 
 .features__stage {
   position: relative; margin-top: 50px;
-  display: grid; grid-template-columns: 1fr 340px 1fr; align-items: stretch;
+  display: grid; grid-template-columns: minmax(0, 1fr) 340px minmax(0, 1fr); column-gap: 8px; align-items: stretch;
 }
 .features__bgword {
-  position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%);
-  text-align: center; font-size: 21vw; font-weight: 800; letter-spacing: -.04em; line-height: 1;
-  color: #f3f3f3; z-index: -1; pointer-events: none; white-space: nowrap;
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  text-align: center; font-size: min(15vw, 236px); font-weight: 800; letter-spacing: -.03em; line-height: .9;
+  color: #f4f4f4; z-index: -1; pointer-events: none; white-space: nowrap;
 }
 .features__watch { height: 480px; position: relative; }
 .features__watch::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: -16px; height: 30px; background: radial-gradient(closest-side, rgba(0,0,0,.18), transparent); z-index: -1; }
-.features__col { display: flex; flex-direction: column; justify-content: space-around; padding: 30px 0; }
-.feat { display: flex; align-items: center; gap: 14px; }
-.features__col--left .feat { text-align: center; }
-.features__col--left .feat:nth-child(2) { padding-left: 50px; }
-.features__col--right .feat:nth-child(2) { padding-right: 50px; }
-.feat__text { width: 200px; flex: none; text-align: center; }
-.feat__icon { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; border: 1px solid #ccc; font-size: 13px; margin-bottom: 10px; background: #fff; transition: transform .5s var(--ease-back), background .3s, color .3s; }
+/* Three evenly spaced features per side, text aligned towards the watch, equal connector lines */
+.features__col { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); align-items: start; padding: 40px 0 0; }
+.feat { display: flex; align-items: flex-start; gap: 18px; }
+.feat__line { margin-top: 60px; } /* level with the title: icon 34px + 12px gap + half the title line */
+.feat__text { flex: 1; min-width: 0; }
+.features__col--left .feat__text { text-align: right; }
+.features__col--right .feat__text { text-align: left; }
+.feat__text h3 { margin-top: 0; }
+.feat p { max-width: 260px; }
+.features__col--left .feat p { margin-left: auto; }
+.feat__icon { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid #e0e0e0; font-size: 14px; margin-bottom: 12px; background: #fff; transition: transform .5s var(--ease-back), background .3s, color .3s; }
 .feat:hover .feat__icon { transform: rotate(180deg) scale(1.2); background: var(--ink); color: #fff; }
 .feat p { font-size: var(--fs-small); line-height: 20px; color: #7a7a7a; margin-top: 4px; }
-.feat__line { flex: 1; height: 1px; background: #1a1a1a; position: relative; transform: scaleX(0); transition: transform 1s var(--ease) calc(var(--d, 0s) + .3s); }
+.feat__line { flex: 0 0 104px; height: 1px; background: #1a1a1a; position: relative; transform: scaleX(0); transition: transform 1s var(--ease) calc(var(--d, 0s) + .3s); }
 .features__col--left .feat__line { transform-origin: left; }
 .features__col--right .feat__line { transform-origin: right; }
 .feat__line::after { content: ""; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); }
@@ -404,7 +408,9 @@ img { display: block; max-width: 100%; }
   .products__grid .pcard:nth-child(even) { margin-top: 40px; }
   .features__stage { grid-template-columns: 1fr 260px 1fr; }
   .features__watch { height: 380px; }
-  .feat__text { width: 140px; }
+  .features__stage { column-gap: 24px; }
+  .feat__line { flex-basis: 36px; }
+
   .features__col--left .feat:nth-child(2), .features__col--right .feat:nth-child(2) { padding: 0; }
 }
 
@@ -433,7 +439,9 @@ img { display: block; max-width: 100%; }
   .features__col { display: contents; }
   .feat { display: block; min-width: 0; padding: 0 !important; }
   .feat__line { display: none; }
-  .feat__text { width: auto; }
+  .feat__text { width: auto; text-align: center !important; }
+  .feat p { margin: 4px auto 0 !important; }
+  .features__bgword { font-size: 26vw; }
   .features__bgword { top: 25%; }
 
   .arrivals { margin: 0; padding: 80px 0 70px; }
