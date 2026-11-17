@@ -156,7 +156,12 @@
 .plusOpen::after { transform: rotate(0); }
 .drawerLinks { display: grid; }
 .drawerLinks a { padding: 10px 0; font-size: 16px; color: #333; }
-.drawerLang { margin-top: auto; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #777; }
+.cur { display: inline-flex; align-items: center; gap: 8px; }
+.cur b { font-weight: 600; min-width: 34px; }
+.drawerPrefs { margin-top: auto; display: grid; gap: 12px; }
+.drawerPrefs label { display: grid; gap: 6px; font-size: 13px; color: #777; }
+.drawerPrefs select { height: 44px; padding: 0 12px; border: 1px solid #e3e3e3; border-radius: 12px; background: #fff; font: inherit; font-size: 15px; color: #0d0d0d; }
+.drawerLang { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #777; }
 
 .bagEmpty { display: grid; justify-items: start; gap: 16px; padding: 24px 0; font-size: 14px; color: #777; }
 .bagList { list-style: none; flex: 1; overflow-y: auto; }

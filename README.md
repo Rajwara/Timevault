@@ -19,14 +19,23 @@ Open http://localhost:3000.
 
 ## Pages
 
-- `/` — the Time Vault homepage (dark, animated)
-- `/collection` — a light, gallery-style shop page (Orbitron headings, Inter body) with collections, product lines, new arrivals, FAQ and a working bag counter. Content lives in `lib/collection.ts`, styles in `app/collection/collection.module.css`.
+| URL | What it is | Content lives in |
+| --- | --- | --- |
+| `/` | Homepage (hero with rotating tile deck, products, features, arrivals, stories) | `lib/data.ts` |
+| `/shop` | Product listing: filters, search, sort, grid/list, quick view, wishlist, bag | `lib/catalog.ts` |
+| `/collection` | Lookbook | `lib/collection.ts` |
+| `/contact` | Contact & Dubai store locator (map, hours, form) | `lib/stores.ts`, `lib/site.ts` |
+| `/blog`, `/blog/<post>` | The Journal | `lib/blog.ts` |
+| `/faq` | FAQ | `lib/faq-page.ts` |
+| `/policies/privacy`, `terms`, `returns`, `shipping`, `warranty` | Policies (drafts — have them reviewed) | `lib/policies.ts` |
 
-- `/shop` — product listing with filters (collection, style, dial colour, strap, price, case size, tags), search, sort, grid/list views, pagination, quick view, wishlist and bag (saved in the browser). Filters live in the URL, so links like `/shop?cat=sport` or `/shop?line=aurum&sort=price-asc` work. Products are in `lib/catalog.ts`.
+Shared on every page: header (`components/header/`), footer (`components/footer/`), welcome-offer popup with a floating "10% off" button (`components/WelcomePopup.tsx`), storefront loader (`lib/loader.ts`).
 
-The **Collections** mega menu (`components/MegaMenu.tsx`, links in `lib/menu.ts`) appears on all three pages.
+**Currency:** prices are stored in USD and shown in the visitor's chosen currency (USD, AED, SAR, EUR, GBP) — rates in `lib/currency.ts`.
 
-The full-screen **page loader** is the storefront-loader snippet, used verbatim from `lib/loader.ts` and injected right after `<body>` in `app/layout.tsx`. Its animation is a GIF hosted on another Shopify store; to use your own, put a file in `public/` and change the `url(...)` in `lib/loader.ts`.
+**Map:** the store locator uses Leaflet with free CARTO "Positron" tiles (no API key). Store names, phone numbers and hours in `lib/stores.ts` are **dummy data** — replace them.
+
+**Forms:** the newsletter, welcome offer and contact form don't send data anywhere yet (the contact form opens the visitor's email app). Look for `TODO` in `components/` to connect an email provider or form service.
 
 ## Header
 

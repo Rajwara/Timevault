@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ArrowDown, BagIcon, Star } from "./Icons";
-import { usd, watches } from "@/lib/collection";
+import Price from "@/components/Price";
+import { watches } from "@/lib/collection";
 import s from "@/app/collection/collection.module.css";
 
 const heroPicks = ["diver", "aurum", "pilot", "naut"];
@@ -73,7 +74,7 @@ export default function Hero() {
           Shop Now <BagIcon />
         </a>
         <p className={s.heroNow} aria-live="polite">
-          {current.name} <span>{usd(current.price)}</span>
+          {current.name} <span><Price usd={current.price} /></span>
         </p>
         <a href="#about" className={s.scrollLink}>
           Scroll Now <span className={s.roundLight}><ArrowDown /></span>

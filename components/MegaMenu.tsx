@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { byId, usd } from "@/lib/collection";
+import Price from "./Price";
+import { byId } from "@/lib/collection";
 import { megaColumns, megaFeatured } from "@/lib/menu";
 import { select, selectionFromHref } from "@/lib/selection";
 import s from "./MegaMenu.module.css";
@@ -59,8 +60,8 @@ export default function MegaPanel({ onNavigate }: { onNavigate?: () => void }) {
                 <span className={s.featSpec}>{w.line}</span>
                 <span className={s.featRow}>
                   <span className={s.featPrice}>
-                    {usd(w.price)}
-                    {w.was && <s><span className="sr-only">was </span>{usd(w.was)}</s>}
+                    <Price usd={w.price} />
+                    {w.was && <s><span className="sr-only">was </span><Price usd={w.was} /></s>}
                   </span>
                   <span className={s.featBtn} aria-hidden="true">
                     Shop now

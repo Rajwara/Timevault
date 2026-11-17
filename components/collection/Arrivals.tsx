@@ -5,7 +5,8 @@ import { useRef } from "react";
 import AddButton from "./AddButton";
 import { scrollRow } from "./Collections";
 import { ArrowLeft, ArrowRight } from "./Icons";
-import { usd, watches } from "@/lib/collection";
+import Price from "@/components/Price";
+import { watches } from "@/lib/collection";
 import s from "@/app/collection/collection.module.css";
 
 export default function Arrivals() {
@@ -32,8 +33,8 @@ export default function Arrivals() {
               <h3>{w.name}</h3>
               <small>{w.line}</small>
               <span className={s.cardPrice}>
-                {usd(w.price)}
-                {w.was && <s className={s.was}>{usd(w.was)}</s>}
+                <Price usd={w.price} />
+                {w.was && <s className={s.was}><Price usd={w.was} /></s>}
               </span>
             </span>
             <AddButton id={w.id} name={w.name} />

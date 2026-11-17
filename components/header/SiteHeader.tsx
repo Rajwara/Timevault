@@ -7,7 +7,8 @@ import { useRef, useState, type FormEvent } from "react";
 import Announcement from "./Announcement";
 import Dropdown from "./Dropdown";
 import MegaPanel, { MenuColumns } from "@/components/MegaMenu";
-import { products, strapOptions, usd } from "@/lib/catalog";
+import { products, strapOptions } from "@/lib/catalog";
+import { CURRENCIES, useCurrency } from "@/lib/currency";
 import { useStore } from "@/lib/cart";
 import { site } from "@/lib/site";
 import s from "./SiteHeader.module.css";
@@ -43,6 +44,8 @@ const contact = `mailto:${site.email}`;
 
 export default function SiteHeader() {
   const store = useStore();
+  const currency = useCurrency();
+  const usd = currency.fmt;
   const router = useRouter();
   const pathname = usePathname();
   const [query, setQuery] = useState("");
@@ -145,6 +148,22 @@ export default function SiteHeader() {
               </Dropdown>
             </div>
             <div className={s.desktopOnly}>
+              <Dropdown label={currency.code} align="right" ariaLabel={`Currency: ${currency.code}`} triggerClassName={s.lang}>
+                {(close) => (
+                  <ul className={s.plainList}>
+                    {CURRENCIES.map((c) => (
+                      <li key={c.code}>
+                        <button type="button" aria-current={c.code === currency.code ? "true" : undefined} onClick={() => { currency.set(c.code); close(); }}>
+                          <span className={s.cur}><span aria-hidden="true">{c.flag}</span> <b>{c.code}</b> {c.name}</span>
+                          {c.code === currency.code && <Check />}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </Dropdown>
+            </div>
+            <div className={s.desktopOnly}>
               <Dropdown label={<UserIcon />} align="right" ariaLabel="My account" triggerClassName={s.iconTrigger}>
                 {(close) => (
                   <div className={s.account}>
@@ -218,7 +237,15 @@ export default function SiteHeader() {
             <Link href="/faq" onClick={closeMenu}>Help &amp; FAQ</Link>
             <Link href="/contact" onClick={closeMenu}>Stores &amp; Contact</Link>
           </nav>
-          <p className={s.drawerLang}>Language: <strong>English</strong> <span className={s.soon}>More soon</span></p>
+          <div className={s.drawerPrefs}>
+            <label>
+              Currency
+              <select value={currency.code} onChange={(e) => currency.set(e.target.value as typeof currency.code)}>
+                {CURRENCIES.map((c) => <option key={c.code} value={c.code}>{c.flag} {c.code} — {c.name}</option>)}
+              </select>
+            </label>
+            <p className={s.drawerLang}>Language: <strong>English</strong> <span className={s.soon}>More soon</span></p>
+          </div>
         </div>
       </dialog>
 
@@ -251,7 +278,7 @@ export default function SiteHeader() {
           )}
           <div className={s.bagFoot}>
             <p><span>Subtotal</span><strong>{usd(subtotal)}</strong></p>
-            <small>We confirm availability, shipping and payment by email within one business day.</small>
+            <small>We confirm availability, shipping and payment by email within one business day.{currency.code !== "USD" && " Prices are converted from US dollars and are approximate."}</small>
             {bagItems.length > 0 ? (
               <a
                 className={`${s.pill} ${s.pillBlock}`}

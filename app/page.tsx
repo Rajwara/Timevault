@@ -22,7 +22,7 @@ export default function Home() {
         description: p.desc,
         image: `${siteUrl()}${p.image}`,
         brand: { "@type": "Brand", name: site.displayName },
-        offers: { "@type": "Offer", priceCurrency: "USD", price: p.price.replace(/[^0-9.]/g, ""), availability: "https://schema.org/InStock" },
+        offers: { "@type": "Offer", priceCurrency: "USD", price: p.price, availability: "https://schema.org/InStock" },
       },
     })),
   };

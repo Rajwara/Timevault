@@ -5,10 +5,11 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  dialOptions, discount, lineOptions, priceOptions, products, sizeOptions, sortOptions, strapOptions, styleOptions, tagOptions, usd,
+  dialOptions, discount, lineOptions, priceOptions, products, sizeOptions, sortOptions, strapOptions, styleOptions, tagOptions,
   type Product, type Sort,
 } from "@/lib/catalog";
 import { useStore } from "@/lib/cart";
+import { useCurrency } from "@/lib/currency";
 import { BagIcon, CheckIcon, ChevronLeft, ChevronRight, CloseIcon, EyeIcon, FilterIcon, Grid2Icon, Grid3Icon, HeartIcon, ListIcon, SearchIcon } from "./Icons";
 import s from "@/app/shop/shop.module.css";
 
@@ -78,6 +79,8 @@ export default function Shop({ query }: { query: string }) {
   const pathname = usePathname();
   const q = useMemo(() => new URLSearchParams(query), [query]);
   const store = useStore();
+  const { fmt: usd } = useCurrency();
+  const priceLabel = (v: string) => ({ u1000: `Under ${usd(1000)}`, "1-5k": `${usd(1000)} – ${usd(5000)}`, "5-10k": `${usd(5000)} – ${usd(10000)}`, o10k: `Over ${usd(10000)}` })[v] ?? v;
 
   const filters = readFilters(q);
   const sort = (sortOptions.find((o) => o.value === q.get("sort"))?.value ?? "featured") as Sort;
@@ -125,7 +128,7 @@ export default function Shop({ query }: { query: string }) {
   const shown = results.slice((page - 1) * PER_PAGE, page * PER_PAGE);
 
   const active = groupKeys.flatMap((k) =>
-    filters[k].map((v) => ({ k, v, label: (groups[k].options as readonly { value: string; label: string }[]).find((o) => o.value === v)!.label })),
+    filters[k].map((v) => ({ k, v, label: k === "price" ? priceLabel(v) : (groups[k].options as readonly { value: string; label: string }[]).find((o) => o.value === v)!.label })),
   );
   const activeCount = active.length + (search ? 1 : 0) + (wishOnly ? 1 : 0);
   const clearAll = () => router.replace(pathname, { scroll: false });
@@ -215,7 +218,7 @@ export default function Shop({ query }: { query: string }) {
                           <label className={`${s.check} ${n === 0 && !on ? s.checkEmpty : ""}`}>
                             <input type="checkbox" checked={on} onChange={() => toggle(k, o.value)} />
                             <span className={s.box} aria-hidden="true"><CheckIcon /></span>
-                            <span className={s.checkLabel}>{o.label}</span>
+                            <span className={s.checkLabel}>{k === "price" ? priceLabel(o.value) : o.label}</span>
                             <span className={s.checkCount}>{String(n).padStart(2, "0")}</span>
                           </label>
                         </li>

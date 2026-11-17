@@ -1,6 +1,7 @@
 import Image from "next/image";
 import AddButton from "./AddButton";
-import { usd, type Watch } from "@/lib/collection";
+import Price from "@/components/Price";
+import type { Watch } from "@/lib/collection";
 import s from "@/app/collection/collection.module.css";
 
 export default function WatchCard({ w, size = "md" }: { w: Watch; size?: "md" | "lg" }) {
@@ -13,8 +14,8 @@ export default function WatchCard({ w, size = "md" }: { w: Watch; size?: "md" | 
         <div>
           <h3 className={s.cardName}>{w.name}</h3>
           <p className={s.cardPrice}>
-            {usd(w.price)}
-            {w.was && <s className={s.was}><span className="sr-only">was </span>{usd(w.was)}</s>}
+            <Price usd={w.price} />
+            {w.was && <s className={s.was}><span className="sr-only">was </span><Price usd={w.was} /></s>}
           </p>
         </div>
         <AddButton id={w.id} name={w.name} />

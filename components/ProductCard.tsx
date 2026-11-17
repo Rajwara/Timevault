@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, type CSSProperties } from "react";
 import BuyButton from "./BuyButton";
+import Price from "./Price";
 import { hasFinePointer, prefersReducedMotion } from "@/lib/motion";
 import type { Product } from "@/lib/data";
 
@@ -42,7 +43,7 @@ export default function ProductCard({ product, delay }: { product: Product; dela
         <h3 className="pcard__name">{product.name}</h3>
         <p className="pcard__desc">{product.desc}</p>
         <div className="pcard__foot">
-          <span className="pcard__price">{product.price}</span>
+          <span className="pcard__price"><Price usd={product.price} /></span>
           <BuyButton id={product.id} product={product.name} />
         </div>
       </div>

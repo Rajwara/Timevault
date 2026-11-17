@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useMemo, useRef, useState, type CSSProperties } from "react";
 import BuyButton from "./BuyButton";
+import Price from "./Price";
 import Pill from "./Pill";
 import { arrivals, filters, type Category } from "@/lib/data";
 import { site } from "@/lib/site";
@@ -110,7 +111,7 @@ export default function Arrivals() {
                   <h3>{a.name}</h3>
                   <p>{a.desc}</p>
                   <div className="acard__foot">
-                    <span>{a.price}</span>
+                    <span><Price usd={a.price} /></span>
                     <BuyButton id={a.id} product={a.name} tabIndex={active ? 0 : -1} />
                   </div>
                 </div>
