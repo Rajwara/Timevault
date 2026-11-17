@@ -51,12 +51,22 @@ export default function MegaPanel({ onNavigate }: { onNavigate?: () => void }) {
           return (
             <Link key={f.id} href={f.href} className={s.feat} onClick={() => choose(f.href)}>
               <span className={s.featImg}>
-                <Image src={w.image} alt="" width={w.w} height={w.h} sizes="140px" />
+                <Image src={w.image} alt="" width={w.w} height={w.h} sizes="160px" />
                 <span className={s.featTag}>{f.tag}</span>
               </span>
-              <span className={s.featName}>{w.name}</span>
-              <span className={s.featMeta}>
-                {usd(w.price)} <span className={s.featCta}>Shop now →</span>
+              <span className={s.featBody}>
+                <span className={s.featName}>{w.name}</span>
+                <span className={s.featSpec}>{w.line}</span>
+                <span className={s.featRow}>
+                  <span className={s.featPrice}>
+                    {usd(w.price)}
+                    {w.was && <s><span className="sr-only">was </span>{usd(w.was)}</s>}
+                  </span>
+                  <span className={s.featBtn} aria-hidden="true">
+                    Shop now
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+                  </span>
+                </span>
               </span>
             </Link>
           );
