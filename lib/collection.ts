@@ -30,24 +30,28 @@ export const tabs: { label: string; value: Tab }[] = [
 
 export const brands = [
   {
+    id: "pilot",
     name: "Pilot Series",
     text: "Instruments for the cockpit: oversized crowns, high-contrast dials and sub-dials you can read at a glance.",
     image: "/assets/story-1.webp",
     picks: ["pilot", "field"],
   },
   {
+    id: "aurum",
     name: "Aurum Collection",
     text: "Precious metals and sunburst dials. Hand-polished cases made for evenings that matter.",
     image: "/assets/story-2b.webp",
     picks: ["aurum", "naut"],
   },
   {
+    id: "racer",
     name: "Racer Line",
     text: "Tachymeter bezels, red chrono hands and perforated straps — built around the speed of the track.",
     image: "/assets/video-thumb.webp",
     picks: ["racer", "diver"],
   },
   {
+    id: "naut",
     name: "Naut Signature",
     text: "Our signature integrated-bracelet sports watch, water resistant to 200m and finished by hand.",
     image: "/assets/story-2a.webp",

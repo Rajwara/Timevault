@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Logo from "./Logo";
+import MegaMenu from "./MegaMenu";
 import { navLinks } from "@/lib/data";
 import { site } from "@/lib/site";
 
@@ -68,7 +69,8 @@ export default function Nav() {
             {l.label}
           </a>
         ))}
-        <Link href="/collection" onClick={() => setOpen(false)}>Collection</Link>
+        <Link href="/shop" onClick={() => setOpen(false)}>Shop</Link>
+        <MegaMenu mode="auto" compactQuery="(max-width: 760px)" triggerClassName="nav__mega" onNavigate={() => setOpen(false)} />
       </div>
       <a href="#footer" className="nav__contact">Contact Us</a>
       <button

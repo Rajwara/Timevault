@@ -22,6 +22,10 @@ Open http://localhost:3000.
 - `/` — the VANTA homepage (dark, animated)
 - `/collection` — a light, gallery-style shop page (Orbitron headings, Inter body) with collections, product lines, new arrivals, FAQ and a working bag counter. Content lives in `lib/collection.ts`, styles in `app/collection/collection.module.css`.
 
+- `/shop` — product listing with filters (collection, style, dial colour, strap, price, case size, tags), search, sort, grid/list views, pagination, quick view, wishlist and bag (saved in the browser). Filters live in the URL, so links like `/shop?cat=sport` or `/shop?line=aurum&sort=price-asc` work. Products are in `lib/catalog.ts`.
+
+The **Collections** mega menu (`components/MegaMenu.tsx`, links in `lib/menu.ts`) appears on all three pages.
+
 ## Customise
 
 - **Brand name, address, social links:** `lib/site.ts`

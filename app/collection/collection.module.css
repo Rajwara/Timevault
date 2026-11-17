@@ -73,6 +73,7 @@ button.roundDark:hover, button.roundLight:hover { transform: scale(1.08); }
   transition: background .3s, color .3s;
 }
 .navPill svg { width: 12px; height: 12px; }
+.navPill[aria-expanded="true"] { background: var(--ink); color: #fff; }
 .navPill:hover { background: var(--ink); color: #fff; }
 .navOutline { background: transparent; border: 1px solid var(--ink); color: var(--ink); }
 .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
@@ -102,7 +103,8 @@ button.roundDark:hover, button.roundLight:hover { transform: scale(1.08); }
 }
 .mobileMenu[hidden] { display: none; }
 .mobileMenu a { padding: 13px 14px; border-radius: 10px; font-size: 15px; font-weight: 500; }
-.mobileMenu a:hover { background: var(--panel); }
+.mobileMenu a:hover, .mobileMega:hover { background: var(--panel); }
+.mobileMega { padding: 13px 14px; border-radius: 10px; font-size: 15px; font-weight: 500; }
 
 /* ---------- Hero ---------- */
 .hero {

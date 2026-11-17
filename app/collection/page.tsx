@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Orbitron } from "next/font/google";
+import { orbitron } from "@/lib/fonts";
 import { CartProvider } from "@/components/collection/Cart";
 import Header from "@/components/collection/Header";
 import Hero from "@/components/collection/Hero";
@@ -11,8 +11,6 @@ import Faq from "@/components/collection/Faq";
 import Footer from "@/components/collection/Footer";
 import { faqs } from "@/lib/collection";
 import s from "./collection.module.css";
-
-const orbitron = Orbitron({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-orbitron", display: "swap" });
 
 export const metadata: Metadata = {
   title: "The Collection",

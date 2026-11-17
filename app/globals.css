@@ -94,6 +94,9 @@ img { display: block; max-width: 100%; }
 .nav__links { display: flex; gap: 30px; }
 .nav__links a { position: relative; font-size: 13px; font-weight: 500; color: #555; transition: color .3s; }
 .nav__links a:hover, .nav__links a.is-active { color: var(--ink); }
+.nav__links { align-items: center; }
+.nav__links .nav__mega { font-size: 13px; font-weight: 500; color: #555; transition: color .3s; }
+.nav__links .nav__mega:hover, .nav__links .nav__mega[aria-expanded="true"] { color: var(--ink); }
 .nav__links a.is-active::after { content: ""; position: absolute; left: 50%; bottom: -8px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: var(--ink); }
 .nav__contact { padding: 9px 18px; border: 1px solid var(--ink); border-radius: 999px; font-size: 12px; font-weight: 600; transition: background .3s, color .3s; }
 .nav__contact:hover { background: var(--ink); color: #fff; }
@@ -386,6 +389,8 @@ img { display: block; max-width: 100%; }
   }
   .nav__links.is-open { opacity: 1; visibility: visible; transform: none; }
   .nav__links a { padding: 12px; font-size: 15px; }
+  .nav__links { align-items: stretch; }
+  .nav__links .nav__mega { padding: 12px; font-size: 15px; color: #555; }
   .nav__links a.is-active::after { display: none; }
   .hero__content { height: auto; padding: 10px 20px 25vw; }
   .hero__intro { position: static; }
