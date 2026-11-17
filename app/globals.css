@@ -175,9 +175,8 @@ img { display: block; max-width: 100%; }
 
 /* ============================ INTRO ============================ */
 .intro { padding: 110px 0 70px; }
-.intro__inner { max-width: 640px; margin-left: auto; }
-.intro__title { font-size: var(--fs-h2); line-height: 1.14; margin-bottom: 16px; text-align: right; padding-right: 70px; }
-.intro .eyebrow { text-align: right; padding-right: 70px; }
+.intro__inner { max-width: 900px; margin: 0 auto; text-align: center; }
+.intro__title { font-size: var(--fs-h2); line-height: 1.14; margin-bottom: 16px; }
 .intro__text { font-size: clamp(32px, 3.4vw, 48px); line-height: 1.02; }
 .js-scrub .w { color: #c8c8c8; transition: color .25s; }
 .js-scrub .w.is-on { color: var(--ink); }
@@ -255,14 +254,12 @@ img { display: block; max-width: 100%; }
 
 /* ============================ ARRIVALS ============================ */
 .arrivals { background: var(--dark); color: #fff; padding: 110px 0 90px; margin: 0 14px; overflow: hidden; }
-.arrivals__head { max-width: 640px; margin-left: auto; }
-.arrivals .eyebrow { padding-left: 100px; }
+.arrivals__head { max-width: 900px; margin: 0 auto; text-align: center; }
 .arrivals__title { font-size: clamp(32px, 3.4vw, 48px); line-height: 1.02; }
 .arrivals__title > span { display: block; }
-.arrivals__title-a { padding-left: 100px; }
 .arrivals .muted { color: #5c5c5c; }
 
-.tabs { display: flex; gap: 8px; margin: 50px 0 40px; flex-wrap: wrap; }
+.tabs { display: flex; justify-content: center; gap: 8px; margin: 50px 0 40px; flex-wrap: wrap; }
 .tab { padding: 9px 18px; border-radius: 999px; background: #1a1a1a; color: #aaa; font-size: var(--fs-btn-sm); line-height: 1.25; letter-spacing: -.02em; font-weight: 500; transition: background .3s, color .3s, transform .3s var(--ease-back); }
 .tab:hover { color: #fff; transform: translateY(-2px); }
 .tab.is-active { background: #fff; color: var(--ink); }
@@ -427,7 +424,6 @@ img { display: block; max-width: 100%; }
   .hero__brand { font-size: 24vw; }
 
   .intro { padding: 80px 0 40px; }
-  .intro__title, .intro .eyebrow { text-align: left; padding: 0; }
 
   .products__grid { gap: 12px; }
   .pcard__word { font-size: 60px; }
@@ -446,7 +442,6 @@ img { display: block; max-width: 100%; }
 
   .arrivals { margin: 0; padding: 80px 0 70px; }
   .arrivals__head { margin: 0; }
-  .arrivals .eyebrow, .arrivals__title-a { padding-left: 0; }
   .carousel__track { height: 340px; }
   .acard { width: 250px; height: 310px; margin: -155px 0 0 -125px; transform: translateX(calc(var(--off) * 200px)) scale(var(--scale, .66)); }
   .acard__word { bottom: 200px; font-size: 64px; }
