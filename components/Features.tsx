@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExplodedWatch from "./ExplodedWatch";
 import type { CSSProperties } from "react";
 import { featuresLeft, featuresRight } from "@/lib/data";
 import { site } from "@/lib/site";
@@ -31,6 +31,9 @@ export default function Features() {
         <span className="muted">timeless performance<br />&amp;comfort.</span>
       </h2>
 
+      {/* The stage is pinned while scrolling through .explode-track, so the watch can break apart and gather */}
+      <div className="explode-track">
+      <div className="explode-sticky">
       <div className="features__stage">
         <span className="features__bgword" aria-hidden="true">{site.name}</span>
 
@@ -39,14 +42,14 @@ export default function Features() {
         </ul>
 
         <div className="features__watch" data-reveal="zoom">
-          <div className="ph">
-            <Image src="/assets/feature-watch.webp" alt="Steel watch with black NATO strap, front view" width={721} height={1400} sizes="(max-width: 760px) 270px, 340px" />
-          </div>
+          <ExplodedWatch />
         </div>
 
         <ul className="features__col features__col--right">
           {featuresRight.map((f, i) => <FeatItem key={f.title} f={f} i={i} side="right" />)}
         </ul>
+      </div>
+      </div>
       </div>
     </section>
   );

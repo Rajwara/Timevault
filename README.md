@@ -31,6 +31,8 @@ Open http://localhost:3000.
 
 Shared on every page: header (`components/header/`), footer (`components/footer/`), welcome-offer popup with a floating "10% off" button (`components/WelcomePopup.tsx`), storefront loader (`lib/loader.ts`).
 
+**Exploded watch:** the homepage features section breaks the watch apart and back together on scroll (`components/ExplodedWatch.tsx`). Part images are in `public/assets/explode/`; prompts for better AI-generated parts are in `docs/exploded-watch-prompts.md`.
+
 **Currency:** prices are stored in USD and shown in the visitor's chosen currency (USD, AED, SAR, EUR, GBP) — rates in `lib/currency.ts`.
 
 **Map:** the store locator uses Leaflet with free CARTO "Positron" tiles (no API key). Store names, phone numbers and hours in `lib/stores.ts` are **dummy data** — replace them.
