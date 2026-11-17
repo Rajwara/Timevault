@@ -40,7 +40,7 @@ export default function LiveHands() {
   }, []);
 
   return (
-    <svg className="live-hands" viewBox="0 0 843 1100" role="img" preserveAspectRatio="xMidYMid meet">
+    <svg className="live-hands" viewBox="0 0 843 1100" role="img" preserveAspectRatio="xMidYMid meet" shapeRendering="geometricPrecision">
       <title ref={label}>The watch shows the current time</title>
       <defs>
         <linearGradient id="lh-steel" x1="0" x2="1">
@@ -54,7 +54,7 @@ export default function LiveHands() {
           <stop offset="1" stopColor="#6f6f6f" />
         </radialGradient>
         <filter id="lh-shadow" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="5" dy="7" stdDeviation="4" floodColor="#000" floodOpacity=".55" />
+          <feDropShadow dx="4" dy="6" stdDeviation="3" floodColor="#000" floodOpacity=".5" />
         </filter>
       </defs>
       <g transform={`translate(${PIVOT.x} ${PIVOT.y})`} filter="url(#lh-shadow)">

@@ -40,6 +40,7 @@ export default function HeroWatch() {
             width={843}
             height={1100}
             priority
+            quality={90}
             sizes="(max-width: 760px) 86vw, 540px"
           />
           <LiveHands />

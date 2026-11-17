@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { ArrowDown, BagIcon, Star } from "./Icons";
 import Price from "@/components/Price";
+import LiveHands from "@/components/LiveHands";
 import { watches } from "@/lib/collection";
 import s from "./collection.module.css";
 
@@ -12,6 +13,7 @@ const heroPicks = ["diver", "aurum", "pilot", "naut"];
 export default function Hero() {
   const [i, setI] = useState(0);
   const current = watches.find((w) => w.id === heroPicks[i])!;
+  const live = current.image === "/assets/hero-watch.webp";
   const next = watches.find((w) => w.id === heroPicks[(i + 1) % heroPicks.length])!;
 
   return (
@@ -22,9 +24,10 @@ export default function Hero() {
       </h1>
 
       <div className={s.heroWatch}>
+        <div className={s.heroFace} key={current.id}>
         <Image
-          key={current.id}
-          src={current.image}
+          src={live ? "/assets/hero-watch-dial.webp" : current.image}
+          quality={90}
           alt={current.name}
           width={current.w}
           height={current.h}
@@ -32,6 +35,9 @@ export default function Hero() {
           sizes="(max-width: 760px) 70vw, 400px"
           className={s.heroWatchImg}
         />
+        {/* the steel diver is the photo we can show the live time on (its printed hands are removed) */}
+        {live && <LiveHands />}
+        </div>
       </div>
 
 
