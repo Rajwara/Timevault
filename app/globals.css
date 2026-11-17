@@ -332,6 +332,10 @@ img { display: block; max-width: 100%; }
 .split__img--b { clip-path: polygon(calc(var(--s) + 24%) 0, 100% 0, 100% 100%, calc(var(--s) - 20%) 100%); }
 .split::before { content: ""; position: absolute; inset: 0; background: #fff; }
 
+/* Live hands drawn over the hero watch (same box as the photo, so they stay aligned at any size) */
+.hero__face { position: relative; }
+.live-hands { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
 /* ============================ EXPLODED WATCH ============================ */
 /* The track gives the scroll distance; the sticky child stays on screen meanwhile */
 .explode-track.is-live { height: 260vh; margin-top: 10px; }

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { clamp, prefersReducedMotion } from "@/lib/motion";
+import LiveHands from "./LiveHands";
 
 /** The hero watch drifts and rotates as you scroll away from the hero. */
 export default function HeroWatch() {
@@ -32,15 +33,16 @@ export default function HeroWatch() {
   return (
     <div className="hero__watch" ref={ref}>
       <div className="hero__watch-float">
-        <div className="ph">
+        <div className="ph hero__face">
           <Image
-            src="/assets/hero-watch.webp"
+            src="/assets/hero-watch-dial.webp"
             alt="Steel wristwatch with black rubber strap"
             width={843}
             height={1100}
             priority
             sizes="(max-width: 760px) 86vw, 540px"
           />
+          <LiveHands />
         </div>
       </div>
     </div>

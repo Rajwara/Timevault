@@ -31,6 +31,8 @@ Open http://localhost:3000.
 
 Shared on every page: header (`components/header/`), footer (`components/footer/`), welcome-offer popup with a floating "10% off" button (`components/WelcomePopup.tsx`), storefront loader (`lib/loader.ts`).
 
+**Live time:** the homepage hero watch shows the visitor's local time (`components/LiveHands.tsx`) over `hero-watch-dial.webp`, the photo with its printed hands removed by `scripts/hero-dial.py`.
+
 **Exploded watch:** the homepage features section breaks the watch apart and back together on scroll (`components/ExplodedWatch.tsx`). Part images are in `public/assets/explode/`; prompts for better AI-generated parts are in `docs/exploded-watch-prompts.md`.
 
 **Currency:** prices are stored in USD and shown in the visitor's chosen currency (USD, AED, SAR, EUR, GBP) — rates in `lib/currency.ts`.
