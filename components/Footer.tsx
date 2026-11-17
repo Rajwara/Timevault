@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Logo from "./Logo";
 import Year from "./Year";
 import { site } from "@/lib/site";
@@ -27,6 +28,7 @@ export default function Footer() {
         <div className="footer__cols">
           <div>
             <h4>Product</h4>
+            <Link href="/collection">Full Collection</Link>
             <a href="#arrivals">Modern Watches</a>
             <a href="#arrivals">Sport Watches</a>
             <a href="#arrivals">Classic Watches</a>

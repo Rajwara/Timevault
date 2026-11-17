@@ -17,6 +17,11 @@ Open http://localhost:3000.
 2. In Vercel, click **Add New → Project** and import the repository. The defaults are correct (Framework: Next.js, build command `next build`).
 3. Optional: under **Settings → Environment Variables**, set `NEXT_PUBLIC_SITE_URL` to your custom domain (e.g. `https://yourdomain.com`) so social-share images, the sitemap and canonical URLs use it. Without it, Vercel's production URL is used.
 
+## Pages
+
+- `/` — the VANTA homepage (dark, animated)
+- `/collection` — a light, gallery-style shop page (Orbitron headings, Inter body) with collections, product lines, new arrivals, FAQ and a working bag counter. Content lives in `lib/collection.ts`, styles in `app/collection/collection.module.css`.
+
 ## Customise
 
 - **Brand name, address, social links:** `lib/site.ts`

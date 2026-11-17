@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Logo from "./Logo";
 import { navLinks } from "@/lib/data";
@@ -67,6 +68,7 @@ export default function Nav() {
             {l.label}
           </a>
         ))}
+        <Link href="/collection" onClick={() => setOpen(false)}>Collection</Link>
       </div>
       <a href="#footer" className="nav__contact">Contact Us</a>
       <button

@@ -1,0 +1,48 @@
+import type { Metadata } from "next";
+import { Orbitron } from "next/font/google";
+import { CartProvider } from "@/components/collection/Cart";
+import Header from "@/components/collection/Header";
+import Hero from "@/components/collection/Hero";
+import About from "@/components/collection/About";
+import Collections from "@/components/collection/Collections";
+import Brands from "@/components/collection/Brands";
+import Arrivals from "@/components/collection/Arrivals";
+import Faq from "@/components/collection/Faq";
+import Footer from "@/components/collection/Footer";
+import { faqs } from "@/lib/collection";
+import s from "./collection.module.css";
+
+const orbitron = Orbitron({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-orbitron", display: "swap" });
+
+export const metadata: Metadata = {
+  title: "The Collection",
+  description: "Explore the full collection: pilot, dress, racing and dive watches with Swiss-calibrated movements and a 5-year warranty.",
+  alternates: { canonical: "/collection" },
+  openGraph: { url: "/collection", images: [{ url: "/assets/hero-watch.webp", width: 843, height: 1100 }] },
+};
+
+export default function CollectionPage() {
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
+
+  return (
+    <CartProvider>
+      <div className={`${s.page} ${orbitron.variable}`} id="top">
+        <Header />
+        <main id="main">
+          <Hero />
+          <About />
+          <Collections />
+          <Brands />
+          <Arrivals />
+          <Faq />
+        </main>
+        <Footer />
+      </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+    </CartProvider>
+  );
+}
