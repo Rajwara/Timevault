@@ -34,8 +34,6 @@ export default function Hero() {
         />
       </div>
 
-      <span className={`${s.ticks} ${s.ticksLeft}`} aria-hidden="true" />
-      <span className={`${s.ticks} ${s.ticksRight}`} aria-hidden="true" />
 
       <div className={s.heroLeft}>
         <p>
