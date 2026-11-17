@@ -10,6 +10,11 @@ export const site = {
     "Discover iconic watches that blend precision engineering with bold, contemporary design. Every VANTA watch is built to last a lifetime.",
   domainLabel: "www.vanta.com",
   address: ["Your street address", "City, Country"],
+  /**
+   * Optional image for the page loader, e.g. "/loader.gif" (put the file in /public).
+   * Leave empty to use the built-in animated VANTA mark.
+   */
+  loaderImage: "",
   social: {
     instagram: "#",
     x: "#",

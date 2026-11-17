@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { site, siteUrl } from "@/lib/site";
+import SiteLoader from "@/components/SiteLoader";
 import "./globals.css";
 
 const archivo = localFont({
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
       <body>
+        <SiteLoader />
         <a href="#main" className="skip-link">Skip to content</a>
         {children}
       </body>
