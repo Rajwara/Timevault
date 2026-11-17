@@ -1,5 +1,6 @@
 import Image from "next/image";
 import HeroWatch from "./HeroWatch";
+import HeroDeck from "./HeroDeck";
 import { site } from "@/lib/site";
 
 export default function Hero() {
@@ -27,20 +28,7 @@ export default function Hero() {
 
         <HeroWatch />
 
-        <a href="#arrivals" className="hero__video">
-          <span className="hero__video-media">
-            <span className="ph">
-              <Image src="/assets/video-thumb.webp" alt="" width={800} height={500} sizes="230px" priority />
-            </span>
-            <span className="hero__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5.5v13l11-6.5z" />
-              </svg>
-            </span>
-          </span>
-          <span className="hero__video-title">Shop Wristwatches</span>
-          <span className="hero__video-sub">{site.domainLabel}</span>
-        </a>
+        <HeroDeck />
       </div>
 
       <div className="hero__brand" aria-hidden="true">

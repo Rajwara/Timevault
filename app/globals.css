@@ -123,23 +123,35 @@ img { display: block; max-width: 100%; }
 .hero__watch-float { width: 100%; height: 100%; animation: watchIn 1.4s var(--ease) .2s both, float 6s ease-in-out 1.8s infinite; }
 .hero__watch img { filter: drop-shadow(0 40px 40px rgba(0,0,0,.35)); }
 
-.hero__video {
-  display: block;
+/* Hero deck: three stacked glass tiles; the front one rotates to the back every 15s */
+.hero__deck {
   position: absolute; z-index: 5; right: 34px; top: 10%;
-  width: 230px; padding: 8px 8px 12px;
-  border-radius: 18px;
-  background: rgba(255,255,255,.28);
-  border: 1px solid rgba(255,255,255,.6);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  color: #fff;
+  width: 230px; height: 252px;
   animation: slideInR 1s var(--ease) .9s both;
-  transition: transform .4s var(--ease);
 }
-.hero__video::before { /* stacked card behind */
-  content: ""; position: absolute; left: 14px; right: 14px; bottom: -10px; height: 30px; z-index: -1;
-  border-radius: 0 0 16px 16px; background: rgba(255,255,255,.35);
+.hero__tile {
+  --pos: 0;
+  position: absolute; left: 0; right: 0; top: 0;
+  display: block; padding: 8px 8px 12px; border-radius: 18px;
+  background: rgba(18,18,18,.34); border: 1px solid rgba(255,255,255,.4);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  color: #fff;
+  z-index: calc(3 - var(--pos));
+  /* back tiles only show the strip that peeks out under the tile in front */
+  clip-path: inset(calc(100% - var(--pos) * 15px - 1px) -1px -1px -1px round 0 0 18px 18px);
+  transform: translateY(calc(var(--pos) * 15px)) scale(calc(1 - var(--pos) * .06));
+  transform-origin: 50% 100%;
+  transition: transform .8s var(--ease), clip-path .8s var(--ease), background .5s, box-shadow .5s;
 }
-.hero__video:hover { transform: translateY(-4px) rotate(-1.5deg); }
+.hero__tile.is-front { clip-path: inset(-40px -40px -40px -40px round 18px); box-shadow: 0 18px 40px rgba(0,0,0,.16); }
+.hero__tile:not(.is-front) { background: rgba(18,18,18,.22); pointer-events: none; }
+.hero__tile-inner { display: block; transition: opacity .45s ease; }
+.hero__tile:not(.is-front) .hero__tile-inner { opacity: 0; }  /* back tiles show only their glass edge */
+.hero__tile.is-front:hover { transform: translateY(-4px) rotate(-1.5deg); }
+.hero__tile-img { width: 100%; height: 100%; object-fit: cover; }
+.hero__deck-dots { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; gap: 6px; }
+.hero__deck-dots button { width: 7px; height: 7px; border-radius: 99px; background: rgba(255,255,255,.55); transition: width .4s var(--ease), background .3s; }
+.hero__deck-dots button[aria-current="true"] { width: 22px; background: #fff; }
 .hero__video-media { position: relative; display: block; height: 120px; border-radius: 12px; overflow: hidden; }
 .hero__video-media .ph { border-radius: 12px; }
 .hero__play {
@@ -150,7 +162,7 @@ img { display: block; max-width: 100%; }
 .hero__play::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #fff; animation: ping 2s ease-out infinite; }
 .hero__play svg { width: 16px; height: 16px; margin-left: 2px; }
 .hero__video-title { display: block; margin: 10px 6px 0; font-size: 16px !important; line-height: 22px !important; text-shadow: 0 1px 8px rgba(0,0,0,.25); }
-.hero__video-sub { display: block; margin: 0 6px; font-size: 12px; line-height: 18px; opacity: .85; }
+.hero__video-sub { display: block; margin: 0 6px; font-size: 12px; line-height: 18px; color: rgba(255,255,255,.82); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .hero__brand {
   position: absolute; z-index: 4; left: 0; right: 0; bottom: -0.1em;
@@ -384,7 +396,7 @@ img { display: block; max-width: 100%; }
   .hero__content { height: auto; padding: 28px 20px 25vw; }
   .hero__intro { position: static; }
   .hero__watch { position: relative; left: auto; top: auto; margin: 10px auto 0; width: 86vw; }
-  .hero__video { position: relative; right: auto; top: auto; margin: -40px 0 0 auto; width: 190px; }
+  .hero__deck { position: relative; right: auto; top: auto; margin: -40px 0 0 auto; width: 190px; height: 222px; }
   .hero__video-media { height: 96px; }
   .hero__brand { font-size: 24vw; }
 
