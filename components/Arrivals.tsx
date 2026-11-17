@@ -111,7 +111,7 @@ export default function Arrivals() {
                   <p>{a.desc}</p>
                   <div className="acard__foot">
                     <span>{a.price}</span>
-                    <BuyButton product={a.name} tabIndex={active ? 0 : -1} />
+                    <BuyButton id={a.id} product={a.name} tabIndex={active ? 0 : -1} />
                   </div>
                 </div>
               </article>

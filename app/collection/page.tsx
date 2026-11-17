@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { orbitron } from "@/lib/fonts";
 import { CartProvider } from "@/components/collection/Cart";
-import Header from "@/components/collection/Header";
 import Hero from "@/components/collection/Hero";
 import About from "@/components/collection/About";
 import Collections from "@/components/collection/Collections";
@@ -28,8 +26,7 @@ export default function CollectionPage() {
 
   return (
     <CartProvider>
-      <div className={`${s.page} ${orbitron.variable}`} id="top">
-        <Header />
+      <div className={`${s.page}`} id="top">
         <main id="main">
           <Hero />
           <About />

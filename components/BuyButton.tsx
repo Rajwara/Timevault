@@ -1,28 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useStore } from "@/lib/cart";
 
-export default function BuyButton({ product, tabIndex }: { product: string; tabIndex?: number }) {
-  const [added, setAdded] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
-
-  useEffect(() => () => clearTimeout(timer.current), []);
-
+/** "Buy Now" on the homepage cards — adds the watch to the shared bag shown in the header. */
+export default function BuyButton({ id, product, tabIndex }: { id: string; product: string; tabIndex?: number }) {
+  const store = useStore();
+  const added = store.inBag(id);
   return (
     <button
       className={`buy-btn${added ? " is-added" : ""}`}
       type="button"
       tabIndex={tabIndex}
-      aria-label={added ? `${product} added to cart` : `Buy ${product}`}
-      aria-live="polite"
+      aria-pressed={added}
+      aria-label={added ? `${product} is in your bag — remove` : `Add ${product} to bag`}
       onClick={(e) => {
         e.stopPropagation();
-        setAdded(true);
-        clearTimeout(timer.current);
-        timer.current = setTimeout(() => setAdded(false), 1400);
+        store.toggleBag(id);
       }}
     >
-      {added ? "Added" : "Buy Now"}
+      {added ? "In Bag" : "Buy Now"}
     </button>
   );
 }

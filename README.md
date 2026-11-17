@@ -28,13 +28,43 @@ The **Collections** mega menu (`components/MegaMenu.tsx`, links in `lib/menu.ts`
 
 The full-screen **page loader** is the storefront-loader snippet, used verbatim from `lib/loader.ts` and injected right after `<body>` in `app/layout.tsx`. Its animation is a GIF hosted on another Shopify store; to use your own, put a file in `public/` and change the `url(...)` in `lib/loader.ts`.
 
+## Header
+
+One header for every page (`components/header/SiteHeader.tsx`): rotating announcement bar, Watches mega menu, Collections and New & Sale dropdowns, "Shop All Watches" pill, centred wordmark, search (goes to `/shop?q=…`), language picker (English only for now), account menu, wishlist and bag with counts, and a slide-in menu on phones.
+
+## Typography
+
+Fonts are loaded with `next/font` in `lib/fonts.ts` and served from the site itself (no requests to Google at runtime).
+
+| Font | Used for |
+| --- | --- |
+| Big Shoulders | Headings (uppercase), the logo, small uppercase labels, giant wordmarks |
+| Space Grotesk | Body text, nav, buttons, product names, prices |
+
+Sizes are defined once as CSS variables at the top of `app/globals.css` (`--fs-hero`, `--fs-h2`, `--fs-h3`, `--fs-body`, …):
+
+| Element | Size | Weight / line height / spacing |
+| --- | --- | --- |
+| Home banner title | 52–128px (scales) | 500 / 0.9 / −0.04em |
+| Shop banner title | 56–112px | 500 / 0.95 / −0.04em |
+| Section heading (H2) | 56px (40px phones) | 500 / 1.14 / −0.04em |
+| Product / quick-view title | 40–60px | 500 / 1 / −0.04em |
+| Small label (`*The Collection`) | 16px | 500 / 24px / +0.01em |
+| Card heading, product name (H3) | 20px (16px in phone grids) | 500 / 28px / −0.03em |
+| Paragraph | 16px | 400 / 24px |
+| Large paragraph | 18px | 400 / 27px |
+| Small text | 14px | 400 / 20px |
+| Buttons | 16px (14px small) | 500 / 1.25 / −0.02em |
+| Nav links | 14px (15px ≥1600px) | 500 |
+| Prices | 16px (24px in quick view) | 700 / −0.03em |
+
 ## Customise
 
 - **Brand name (Time Vault), address, social links:** `lib/site.ts` — `name` is the wordmark, `displayName` is used in sentences
 - **Products, arrivals, features, nav links:** `lib/data.ts`
 - **Images:** `public/assets/` (served through `next/image`, so AVIF/WebP and responsive sizes are generated automatically)
 - **Styles:** `app/globals.css`
-- **Fonts:** `app/fonts/` (self-hosted via `next/font/local`, no external requests)
+- **Fonts:** `lib/fonts.ts` (see Typography above)
 
 ## Structure
 

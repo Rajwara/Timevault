@@ -157,6 +157,14 @@ export default function Shop({ query }: { query: string }) {
         </nav>
       </div>
 
+      <div className={`${s.wrap} ${s.banner}`}>
+        <p className={s.label}>{wishOnly ? "Saved for later" : "The Collection"}</p>
+        <h1 id="shop-title">{wishOnly ? "Your Wishlist" : "Shop All Watches"}</h1>
+        <p className={s.bannerText}>
+          Swiss-calibrated movements, sapphire crystal and a 5-year warranty on every piece. Free insured shipping over $500.
+        </p>
+      </div>
+
       <div className={`${s.wrap} ${s.layout}`} ref={top}>
         {/* ---------- Sidebar ---------- */}
         <aside className={`${s.sidebar} ${drawer ? s.sidebarOpen : ""}`} aria-label="Filters">
@@ -228,14 +236,10 @@ export default function Shop({ query }: { query: string }) {
 
         {/* ---------- Results ---------- */}
         <section className={s.results} aria-labelledby="shop-title">
-          <div className={s.titleRow}>
-            <h1 id="shop-title">{wishOnly ? "Your Wishlist" : "Shop All Watches"}</h1>
-            <p aria-live="polite">
+          <div className={s.toolbar}>
+            <p className={s.resultCount} aria-live="polite">
               {results.length === 0 ? "No results" : `Showing ${(page - 1) * PER_PAGE + 1}–${(page - 1) * PER_PAGE + shown.length} of ${results.length} watches`}
             </p>
-          </div>
-
-          <div className={s.toolbar}>
             <button type="button" className={s.filterBtn} onClick={() => setDrawer(true)} aria-expanded={drawer}>
               <FilterIcon /> Filters{activeCount > 0 && <span>{activeCount}</span>}
             </button>

@@ -30,11 +30,11 @@ export type Arrival = {
 
 export const arrivals: Arrival[] = [
   { id: "heritage", name: "Heritage Dress", word: "Heritage", desc: "Cream dial with gold indices and brown leather strap.", price: "$2,450", image: "/assets/arrival-1.webp", cat: "classic" },
-  { id: "pilot", name: "Pilot Chronograph", word: "Pilot", desc: "Black dial, three sub-dials, made for the skies.", price: "$3,200", image: "/assets/arrival-2.webp", cat: "sport" },
-  { id: "racer", name: "Racer Chrono", word: "Racer", desc: "Silver tachymeter dial with red details, inspired by motorsport.", price: "$9,000", image: "/assets/arrival-3.webp", cat: "sport" },
-  { id: "aurum", name: "Aurum Blue", word: "Aurum", desc: "Rose-gold case with a sunburst blue dial.", price: "$6,800", image: "/assets/arrival-4.webp", cat: "classic" },
+  { id: "pilot-night", name: "Pilot Night Chrono", word: "Pilot", desc: "Matte black dial and stitched leather, legible in any light.", price: "$3,200", image: "/assets/arrival-2.webp", cat: "sport" },
+  { id: "racer-tachy", name: "Racer Tachymeter", word: "Racer", desc: "Silver tachymeter dial with red details, inspired by motorsport.", price: "$8,750", image: "/assets/arrival-3.webp", cat: "sport" },
+  { id: "aurum-sunburst", name: "Aurum Sunburst", word: "Aurum", desc: "Rose-gold case and bracelet around a sunburst blue dial.", price: "$6,800", image: "/assets/arrival-4.webp", cat: "classic" },
   { id: "orbit", name: "Orbit Skeleton", word: "Orbit", desc: "Open-worked blue dial showing the movement inside.", price: "$12,900", image: "/assets/arrival-5.webp", cat: "modern" },
-  { id: "naut", name: "Vault Naut", word: "Vault", desc: "Our signature model — bold, precise and crafted for collectors.", price: "$745", image: "/assets/arrival-6.webp", cat: "modern" },
+  { id: "naut-black", name: "Vault Naut Black", word: "Vault", desc: "The signature Naut in brushed steel with an all-black dial.", price: "$790", image: "/assets/arrival-6.webp", cat: "modern" },
 ];
 
 export const filters: { label: string; value: Category | "all" }[] = [

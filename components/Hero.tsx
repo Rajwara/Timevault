@@ -1,20 +1,18 @@
 import Image from "next/image";
-import Nav from "./Nav";
 import HeroWatch from "./HeroWatch";
 import { site } from "@/lib/site";
 
 export default function Hero() {
   return (
-    <header className="hero" id="top">
+    <section className="hero" id="top" aria-label="Introduction">
       <div className="hero__bg" aria-hidden="true" />
-      <Nav />
 
       <div className="hero__content">
         <div className="hero__intro">
           <h1 className="hero__title">
-            <strong>{site.name}</strong> will make
+            <strong>{site.name}</strong>
             <br />
-            your life easier
+            will make your life easier
           </h1>
           <p className="hero__text">
             Explore our best products to find what you want. Every watch is built to last a lifetime.
@@ -48,6 +46,6 @@ export default function Hero() {
       <div className="hero__brand" aria-hidden="true">
         {site.name}
       </div>
-    </header>
+    </section>
   );
 }

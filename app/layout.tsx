@@ -1,23 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
-import { site, siteUrl } from "@/lib/site";
+import SiteHeader from "@/components/header/SiteHeader";
+import { body, heading } from "@/lib/fonts";
 import { loaderHtml } from "@/lib/loader";
+import { site, siteUrl } from "@/lib/site";
 import "./globals.css";
-
-const archivo = localFont({
-  src: "./fonts/archivo-var.woff2",
-  variable: "--font-archivo",
-  weight: "100 900",
-  display: "swap",
-  declarations: [{ prop: "font-stretch", value: "62% 125%" }],
-});
-
-const inter = localFont({
-  src: "./fonts/inter-var.woff2",
-  variable: "--font-inter",
-  weight: "100 900",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
@@ -51,7 +37,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${heading.variable} ${body.variable}`} suppressHydrationWarning>
       <head>
         {/* Enables scroll-reveal styles only when JavaScript runs, so content is never hidden without it. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
@@ -60,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Storefront loader (verbatim snippet). display:contents keeps this wrapper out of the layout. */}
         <div style={{ display: "contents" }} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: loaderHtml }} />
         <a href="#main" className="skip-link">Skip to content</a>
+        <SiteHeader />
         {children}
       </body>
     </html>

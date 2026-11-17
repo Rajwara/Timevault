@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import ShopHeader from "@/components/shop/ShopHeader";
 import Shop, { ShopFromUrl } from "@/components/shop/Shop";
 import ShopFooter from "@/components/shop/ShopFooter";
 import { products } from "@/lib/catalog";
-import { orbitron } from "@/lib/fonts";
 import { site, siteUrl } from "@/lib/site";
 import s from "./shop.module.css";
 
@@ -35,8 +33,7 @@ export default function ShopPage() {
   };
 
   return (
-    <div className={`${s.page} ${orbitron.variable}`} id="top">
-      <ShopHeader />
+    <div className={`${s.page}`} id="top">
       <main id="main">
         {/* The URL holds filters/sort/page; the fallback renders the unfiltered list for the static HTML. */}
         <Suspense fallback={<Shop query="" />}>
