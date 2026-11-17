@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${u}/collection`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${u}/blog`, changeFrequency: "weekly", priority: 0.7 },
     ...POSTS.map((p) => ({ url: `${u}/blog/${p.slug}`, lastModified: p.date, changeFrequency: "yearly" as const, priority: 0.6 })),
+    { url: `${u}/contact`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${u}/faq`, changeFrequency: "monthly", priority: 0.6 },
     ...POLICIES.map((p) => ({ url: `${u}/policies/${p.slug}`, lastModified: p.updated, changeFrequency: "yearly" as const, priority: 0.3 })),
   ];

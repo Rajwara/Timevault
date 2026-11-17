@@ -14,7 +14,10 @@ export const site = {
   domainLabel: "www.timevault.com",
   /** Customer-service email used across the site (orders, help, privacy requests). */
   email: "hello@example.com",
-  address: ["Your street address", "City, Country"],
+  /** DUMMY contact details — replace with the real ones before launch. */
+  phone: "+971 4 555 0123",
+  whatsapp: "+971 50 555 0123",
+  address: ["Alserkal Avenue, Al Quoz 1", "Dubai, United Arab Emirates"],
   social: {
     instagram: "#",
     x: "#",

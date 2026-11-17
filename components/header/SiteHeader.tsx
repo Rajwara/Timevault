@@ -39,7 +39,7 @@ const languages = [
   { code: "AR", label: "العربية", ready: false },
   { code: "FR", label: "Français", ready: false },
 ];
-const contact = "mailto:hello@example.com";
+const contact = `mailto:${site.email}`;
 
 export default function SiteHeader() {
   const store = useStore();
@@ -122,8 +122,8 @@ export default function SiteHeader() {
 
           {/* ---------- Right ---------- */}
           <div className={s.right}>
-            <Link href="/blog" className={`${s.textLink} ${s.hideLg}`} aria-current={pathname.startsWith("/blog") ? "page" : undefined}>Journal</Link>
-            <Link href="/faq" className={`${s.textLink} ${s.hideXl}`}>Help &amp; FAQ</Link>
+            <Link href="/blog" className={`${s.textLink} ${s.hideXl}`} aria-current={pathname.startsWith("/blog") ? "page" : undefined}>Journal</Link>
+            <Link href="/contact" className={`${s.textLink} ${s.hideLg}`} aria-current={pathname === "/contact" ? "page" : undefined}>Stores &amp; Contact</Link>
             <div className={s.searchInline}>{searchForm("header-search")}</div>
             <button type="button" className={`${s.iconBtn} ${s.searchToggle} ${s.tabletOnly}`} aria-label="Search" aria-expanded={searchOpen} onClick={() => setSearchOpen((o) => !o)}>
               <SearchIcon />
@@ -216,7 +216,7 @@ export default function SiteHeader() {
             <Link href="/blog" onClick={closeMenu}>Journal</Link>
             <Link href="/shop?wish=1" onClick={closeMenu}>Wishlist ({store.wish.length})</Link>
             <Link href="/faq" onClick={closeMenu}>Help &amp; FAQ</Link>
-            <a href={contact}>Contact us</a>
+            <Link href="/contact" onClick={closeMenu}>Stores &amp; Contact</Link>
           </nav>
           <p className={s.drawerLang}>Language: <strong>English</strong> <span className={s.soon}>More soon</span></p>
         </div>

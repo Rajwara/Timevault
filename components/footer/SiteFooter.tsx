@@ -36,7 +36,7 @@ const columns = [
       { label: "About Us", href: "/collection#about" },
       { label: "Blog", href: "/blog" },
       { label: "Lookbook", href: "/collection" },
-      { label: "Contact", href: `mailto:${site.email}` },
+      { label: "Stores & Contact", href: "/contact" },
     ],
   },
   {
@@ -86,6 +86,7 @@ export default function SiteFooter() {
             <Link href="/" className={s.logo}>{site.name}</Link>
             <p>Precision wristwatches with Swiss-calibrated movements and sapphire crystal, made to be worn every day and kept for a lifetime.</p>
             <ul className={s.contact}>
+              <li><a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`}>{site.phone}</a></li>
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
               <li>{site.address[0]}, {site.address[1]}</li>
             </ul>
