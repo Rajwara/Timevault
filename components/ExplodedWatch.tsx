@@ -43,6 +43,7 @@ const VIEW = { rx: 54, rz: -20, s: 0.74, ty: 0.32 };
 const [CW, CH] = partsJson.canvas as [number, number];
 const [PX, PY] = partsJson.pivot as [number, number];
 const BOX = partsJson.boxes as Record<Key, [number, number, number, number]>;
+const VERSION = (partsJson as { version?: string }).version ?? "1"; // changes when the part images change, so caches refresh
 const CASE_D = BOX.bezel[2]; // case diameter in source pixels
 const PERSPECTIVE = 1600;
 
@@ -170,7 +171,7 @@ export default function ExplodedWatch() {
             const [, , bw, bh] = BOX[p.key];
             return (
               <div key={p.key} className={`xw__part xw__part--${p.key}`} ref={(el) => { parts.current[p.key] = el; }}>
-                <Image src={`/assets/explode/${p.key}.webp`} alt="" width={bw} height={bh} sizes={p.key === "body" ? "340px" : "260px"} />
+                <Image src={`/assets/explode/${p.key}.webp?v=${VERSION}`} alt="" width={bw} height={bh} sizes={p.key === "body" ? "340px" : "260px"} />
               </div>
             );
           })}

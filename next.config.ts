@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    // allow ?v=… cache-busting on the exploded-watch parts
+    localPatterns: [{ pathname: "/assets/explode/**" }, { pathname: "/**", search: "" }],
   },
 };
 

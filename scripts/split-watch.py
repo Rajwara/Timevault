@@ -144,5 +144,7 @@ boxes = {
     "crown": save(crown, (650, 600, W, 770), "crown"),
     "crystal": save(crys, (CX - R_GLASS, CY - R_GLASS, CX + R_GLASS, CY + R_GLASS), "crystal"),
 }
-json.dump({"canvas": [W, H], "pivot": [CX, CY], "boxes": boxes}, open(f"{OUT}/parts.json", "w"), indent=2)
+import hashlib
+version = hashlib.md5(b"".join(open(f"{OUT}/{k}.webp", "rb").read() for k in sorted(boxes))).hexdigest()[:8]
+json.dump({"canvas": [W, H], "pivot": [CX, CY], "boxes": boxes, "version": version}, open(f"{OUT}/parts.json", "w"), indent=2)
 print(json.dumps(boxes))

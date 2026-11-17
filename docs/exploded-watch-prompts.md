@@ -53,5 +53,8 @@ Tips:
 
 ## Putting them on the site
 
+Current parts (case with movement, dial, bezel, crystal, crown) are AI-generated originals kept in `assets-src/explode/`. To refit them after changing any, run `python3 scripts/place-parts.py` — it scales and centres each part on the watch and updates `public/assets/explode/`. The hands are still cut from the photo.
+
+
 Put the files in `public/assets/explode/` with the exact names above (replacing the current ones), or send them to me and I'll drop them in, crop them and check the alignment.
 To rebuild the cut-out versions at any time: `python3 scripts/split-watch.py` (needs `pip install numpy pillow opencv-python-headless`).
