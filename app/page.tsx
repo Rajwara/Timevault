@@ -4,7 +4,6 @@ import Products from "@/components/Products";
 import Features from "@/components/Features";
 import Arrivals from "@/components/Arrivals";
 import Stories from "@/components/Stories";
-import Footer from "@/components/Footer";
 import RevealObserver from "@/components/RevealObserver";
 import { arrivals, products } from "@/lib/data";
 import { site, siteUrl } from "@/lib/site";
@@ -38,7 +37,6 @@ export default function Home() {
         <Arrivals />
         <Stories />
       </main>
-      <Footer />
       <RevealObserver />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </>

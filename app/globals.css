@@ -331,33 +331,6 @@ img { display: block; max-width: 100%; }
 .split__img--b { clip-path: polygon(calc(var(--s) + 24%) 0, 100% 0, 100% 100%, calc(var(--s) - 20%) 100%); }
 .split::before { content: ""; position: absolute; inset: 0; background: #fff; }
 
-/* ============================ FOOTER ============================ */
-.footer { position: relative; overflow: hidden; background: var(--dark); color: #fff; margin: 0 14px; border-radius: 40px 40px 0 0; padding: 60px 0 0; }
-.footer__inner { position: relative; z-index: 2; }
-.footer__top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
-.footer__logo { display: inline-flex; align-items: center; gap: 10px; font-size: 36px; line-height: 1; font-weight: 700 !important; letter-spacing: -.01em !important; }
-.footer__logo svg { width: 28px; height: 28px; }
-.footer__about p { font-size: var(--fs-body); line-height: 24px; color: #8a8a8a; max-width: 340px; margin-top: 14px; }
-.footer__links { display: flex; gap: 48px; font-size: var(--fs-small); line-height: 20px; color: #bbb; }
-.footer__links a, .footer__cols a { transition: color .3s; }
-.footer__links a:hover, .footer__cols a:hover { color: var(--accent); }
-.footer__cols { display: flex; flex-direction: column; gap: 28px; margin: 50px 0 0 auto; width: max-content; min-width: 220px; }
-.footer__cols h4 { font-size: var(--fs-label); line-height: 24px; letter-spacing: .01em !important; margin-bottom: 8px; }
-.footer__cols a, .footer__cols p { display: block; font-size: var(--fs-small); color: #8a8a8a; line-height: 26px; }
-.footer__bottom { display: flex; justify-content: space-between; align-items: flex-end; padding: 15vw 0 30px; position: relative; z-index: 3; }
-.footer__social { display: flex; flex-direction: column; gap: 8px; }
-.footer__social a { width: 30px; height: 30px; border-radius: 50%; background: #fff; color: #000; display: grid; place-items: center; transition: transform .3s var(--ease-back), background .3s; }
-.footer__social a:hover { transform: scale(1.15); background: var(--accent); color: #fff; }
-.footer__social svg { width: 14px; height: 14px; }
-.footer__copy { font-size: var(--fs-small); line-height: 20px; color: #777; }
-.footer__brand {
-  position: absolute; left: 0; right: 0; bottom: -0.2em; z-index: 1; pointer-events: none;
-  text-align: center; white-space: nowrap;
-  font-size: 24vw; font-weight: 800; letter-spacing: -.03em; line-height: .85;
-  background: linear-gradient(180deg, #2a2a2a 0%, rgba(30,30,30,0) 85%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-
 /* ============================ REVEAL ============================ */
 .js [data-reveal] { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease) var(--d, 0s), transform 1s var(--ease) var(--d, 0s); }
 .js [data-reveal="zoom"] { transform: scale(.85) rotate(-8deg); }

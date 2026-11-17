@@ -215,32 +215,6 @@
 .quickBtns { display: flex; gap: 10px; margin-top: auto; }
 .quickBtns .btnDark { flex: 1; }
 
-/* ---------- Footer ---------- */
-.footer { border-top: 1px solid var(--line); }
-.footerGrid { display: grid; grid-template-columns: 1.3fr 1fr 1.3fr; gap: 48px; padding: 64px 0 56px; }
-.footerAbout p { margin: 16px 0 20px; font-size: 16px; line-height: 24px; color: var(--mute); max-width: 340px; }
-.social { display: flex; gap: 8px; }
-.social a { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: #fff; transition: background .3s, transform .3s var(--ease); }
-.social a:hover { background: var(--accent); transform: translateY(-2px); }
-.social svg { width: 15px; height: 15px; }
-.footerLinks { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.footerLinks h3, .newsletter h3 { font-family: var(--head); font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: .01em; text-transform: uppercase; margin-bottom: 10px; }
-.footerLinks a { display: block; padding: 4px 0; font-size: 14px; line-height: 20px; color: var(--ink-2); transition: color .25s; }
-.footerLinks a:hover { color: var(--accent); }
-.newsletter > p { font-size: 16px; line-height: 24px; color: var(--mute); margin-bottom: 14px; }
-.newsletter form { display: flex; height: 46px; }
-.newsletter input { flex: 1; min-width: 0; padding: 0 14px; border: 1px solid var(--line); border-right: 0; border-radius: 10px 0 0 10px; background: var(--panel); font: inherit; font-size: 14px; outline: 0; }
-.newsletter input:focus { border-color: var(--ink); background: #fff; }
-.newsletter input[aria-invalid="true"] { border-color: #d33; }
-.newsletter button[type="submit"] { padding: 0 20px; border-radius: 0 10px 10px 0; background: var(--ink); color: #fff; font-size: 14px; font-weight: 500; letter-spacing: -.02em; transition: background .3s; }
-.newsletter button[type="submit"]:hover { background: var(--accent); }
-.nlMsg { min-height: 20px; margin-top: 8px; font-size: 14px; color: var(--ink-2); }
-.payments { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin-top: 6px; }
-.payments li { padding: 5px 9px; border: 1px solid var(--line); border-radius: 6px; font-size: 12px; font-weight: 500; color: var(--ink-2); }
-.copy { background: var(--ink); color: #9a9a9a; font-size: 14px; line-height: 20px; }
-.copy .wrap { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; }
-.copy a:hover { color: #fff; }
-
 /* ---------- Motion ---------- */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @keyframes slideIn { from { transform: translateX(100%); } to { transform: none; } }

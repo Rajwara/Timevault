@@ -12,6 +12,8 @@ export const site = {
   description:
     "Discover iconic watches that blend precision engineering with bold, contemporary design. Every Time Vault watch is built to last a lifetime.",
   domainLabel: "www.timevault.com",
+  /** Customer-service email used across the site (orders, help, privacy requests). */
+  email: "hello@example.com",
   address: ["Your street address", "City, Country"],
   social: {
     instagram: "#",

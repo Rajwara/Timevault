@@ -1,9 +1,5 @@
-import { faqs } from "./collection";
-
 export type MenuLink = { label: string; href: string; note?: string };
 export type MenuColumn = { title: string; links: MenuLink[] };
-
-const helpLabels = ["Delivery & Shipping", "Warranty & Service", "Returns & Exchanges", "Strap Sizing Guide"];
 
 export const megaColumns: MenuColumn[] = [
   {
@@ -31,8 +27,12 @@ export const megaColumns: MenuColumn[] = [
   {
     title: "Help & Services",
     links: [
-      ...faqs.map((_, i) => ({ label: helpLabels[i] ?? faqs[i].q, href: `/collection?faq=${i}#faq` })),
-      { label: "Our Story", href: "/collection#about" },
+      { label: "Delivery & Shipping", href: "/policies/shipping" },
+      { label: "Warranty & Service", href: "/policies/warranty" },
+      { label: "Returns & Exchanges", href: "/policies/returns" },
+      { label: "Strap Sizing Guide", href: "/blog/how-to-find-your-strap-size" },
+      { label: "FAQ", href: "/faq" },
+      { label: "The Journal", href: "/blog", note: "Blog" },
     ],
   },
 ];

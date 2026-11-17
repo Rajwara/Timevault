@@ -23,29 +23,42 @@ export default function WelcomePopup() {
   const [left, setLeft] = useState<number | null>(null);
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"form" | "error" | "done">("form");
+  const [fab, setFab] = useState(false); // floating "10% off" button, shown after the popup is closed without joining
 
   // Decide whether to show it (add ?welcome=1 to any URL to preview it any time)
   useEffect(() => {
     const force = new URLSearchParams(window.location.search).get("welcome") === "1";
     const saved = read();
     const snoozed = saved.dismissedAt && Date.now() - saved.dismissedAt < SNOOZE_DAYS * 864e5;
-    if (!force && (saved.joined || snoozed)) return;
+    if (saved.joined && !force) return;
+    if (snoozed && !force) {
+      // Closed before: don't pop up again, but keep the offer one click away
+      let hidden = false;
+      try { hidden = sessionStorage.getItem(KEY + "-fab") === "hidden"; } catch { /* ignore */ }
+      if (!hidden) setFab(true);
+      return;
+    }
 
     let timer: ReturnType<typeof setTimeout>;
     const open = () => {
       // Don't interrupt if another dialog (bag, menu, quick view) is open
       if (document.querySelector("dialog[open]")) { timer = setTimeout(open, 4000); return; }
-      const first = force ? Date.now() : read().firstSeen ?? Date.now();
-      if (!read().firstSeen || force) write({ firstSeen: first });
-      setLeft(Math.max(0, first + OFFER_WINDOW_MS - Date.now()));
-      dialog.current?.showModal();
-      dialog.current?.focus(); // start focus on the dialog itself, not the close button
+      show(force);
     };
     const start = () => { timer = setTimeout(open, force ? 600 : SHOW_AFTER_MS); };
     if (document.readyState === "complete") start();
     else window.addEventListener("load", start, { once: true });
     return () => { clearTimeout(timer); window.removeEventListener("load", start); };
   }, []);
+
+  function show(restart = false) {
+    const first = restart ? Date.now() : read().firstSeen ?? Date.now();
+    if (!read().firstSeen || restart) write({ firstSeen: first });
+    setLeft(Math.max(0, first + OFFER_WINDOW_MS - Date.now()));
+    setFab(false);
+    dialog.current?.showModal();
+    dialog.current?.focus(); // start focus on the dialog itself, not the close button
+  }
 
   // Countdown
   useEffect(() => {
@@ -55,7 +68,15 @@ export default function WelcomePopup() {
   }, [left === null]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const close = () => dialog.current?.close();
-  const onClose = () => { if (state !== "done") write({ dismissedAt: Date.now() }); };
+  const onClose = () => {
+    if (state === "done") return;
+    write({ dismissedAt: Date.now() });
+    setFab(true);
+  };
+  const hideFab = () => {
+    setFab(false);
+    try { sessionStorage.setItem(KEY + "-fab", "hidden"); } catch { /* ignore */ }
+  };
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -70,6 +91,20 @@ export default function WelcomePopup() {
   const expired = left === 0;
 
   return (
+    <>
+    {fab && (
+      <div className={s.fab}>
+        <button type="button" className={s.fabMain} onClick={() => show()} aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-1.5-3-5-3.5-5-1.2C7 7 9.5 7 12 7zm0 0c1.5-3 5-3.5 5-1.2C17 7 14.5 7 12 7z" />
+          </svg>
+          Get {OFFER.percent}% off
+        </button>
+        <button type="button" className={s.fabClose} onClick={hideFab} aria-label="Hide offer button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17" /></svg>
+        </button>
+      </div>
+    )}
     <dialog
       ref={dialog}
       className={s.dialog}
@@ -143,5 +178,6 @@ export default function WelcomePopup() {
         </div>
       </div>
     </dialog>
+    </>
   );
 }

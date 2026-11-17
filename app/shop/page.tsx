@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Shop, { ShopFromUrl } from "@/components/shop/Shop";
-import ShopFooter from "@/components/shop/ShopFooter";
 import { products } from "@/lib/catalog";
 import { site, siteUrl } from "@/lib/site";
 import s from "./shop.module.css";
@@ -40,7 +39,6 @@ export default function ShopPage() {
           <ShopFromUrl />
         </Suspense>
       </main>
-      <ShopFooter />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </div>
   );

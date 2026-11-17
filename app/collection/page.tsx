@@ -6,7 +6,6 @@ import Collections from "@/components/collection/Collections";
 import Brands from "@/components/collection/Brands";
 import Arrivals from "@/components/collection/Arrivals";
 import Faq from "@/components/collection/Faq";
-import Footer from "@/components/collection/Footer";
 import { faqs } from "@/lib/collection";
 import s from "./collection.module.css";
 
@@ -35,7 +34,6 @@ export default function CollectionPage() {
           <Arrivals />
           <Faq />
         </main>
-        <Footer />
       </div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
     </CartProvider>

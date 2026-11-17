@@ -91,6 +91,32 @@
 }
 .done .cta { margin-top: 26px; }
 
+/* ---------- Floating "10% off" button ---------- */
+.fab {
+  position: fixed; left: 20px; bottom: 20px; z-index: 80;
+  display: flex; align-items: center;
+  animation: fabIn .6s cubic-bezier(.34, 1.56, .64, 1);
+}
+.fabMain {
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 50px; padding: 0 22px 0 18px; border-radius: 999px;
+  background: #0d0d0d; color: #fff; box-shadow: 0 14px 34px rgba(0,0,0,.25);
+  font-family: var(--font-body), system-ui, sans-serif; font-size: 16px; font-weight: 500; letter-spacing: -.02em;
+  transition: transform .35s cubic-bezier(.16, 1, .3, 1), background .25s;
+}
+.fabMain:hover { transform: translateY(-2px); background: #ff4a17; }
+.fabMain svg { width: 20px; height: 20px; animation: wiggle 4s ease-in-out 2s infinite; }
+.fabClose {
+  position: absolute; right: -6px; top: -6px; display: grid; place-items: center;
+  width: 22px; height: 22px; border-radius: 50%; background: #fff; color: #0d0d0d;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2); opacity: 0; transition: opacity .2s;
+}
+.fab:hover .fabClose, .fabClose:focus-visible { opacity: 1; }
+.fabClose svg { width: 11px; height: 11px; }
+@media (hover: none) { .fabClose { opacity: 1; } }
+@keyframes fabIn { from { opacity: 0; transform: translateY(30px) scale(.8); } to { opacity: 1; transform: none; } }
+@keyframes wiggle { 0%, 86%, 100% { transform: rotate(0); } 89% { transform: rotate(-14deg); } 93% { transform: rotate(12deg); } 97% { transform: rotate(-6deg); } }
+
 @keyframes pop { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes blink { to { opacity: .2; } }
@@ -113,5 +139,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dialog, .dialog::backdrop, .dot::after { animation: none; }
+  .dialog, .dialog::backdrop, .dot::after, .fab, .fabMain svg { animation: none; }
 }
