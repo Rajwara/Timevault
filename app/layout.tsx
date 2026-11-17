@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import SiteHeader from "@/components/header/SiteHeader";
+import WelcomePopup from "@/components/WelcomePopup";
 import { body, heading } from "@/lib/fonts";
 import { loaderHtml } from "@/lib/loader";
 import { site, siteUrl } from "@/lib/site";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="skip-link">Skip to content</a>
         <SiteHeader />
         {children}
+        <WelcomePopup />
       </body>
     </html>
   );
