@@ -13,7 +13,7 @@ export const products: Product[] = [
   { id: "pilot", name: "Pilot Chronograph", word: "Pilot", desc: "Black dial, three sub-dials and riveted leather strap, made for the skies.", price: "$437", discount: "25%", image: "/assets/product-1.webp", up: true },
   { id: "aurum", name: "Aurum Blue", word: "Aurum", desc: "Rose-gold case and bracelet with a deep sunburst blue dial.", price: "$11,450", discount: "10%", image: "/assets/product-2.webp" },
   { id: "racer", name: "Racer Chrono", word: "Racer", desc: "Silver dial with red chrono hands and a perforated racing strap.", price: "$9,000", discount: "15%", image: "/assets/product-3.webp", up: true },
-  { id: "naut", name: "Vanta Naut", word: "Vanta", desc: "Our signature model — bold, precise and crafted for collectors.", price: "$745", discount: "20%", image: "/assets/product-4.webp" },
+  { id: "naut", name: "Vault Naut", word: "Vault", desc: "Our signature model — bold, precise and crafted for collectors.", price: "$745", discount: "20%", image: "/assets/product-4.webp" },
 ];
 
 export type Category = "classic" | "modern" | "sport";
@@ -34,7 +34,7 @@ export const arrivals: Arrival[] = [
   { id: "racer", name: "Racer Chrono", word: "Racer", desc: "Silver tachymeter dial with red details, inspired by motorsport.", price: "$9,000", image: "/assets/arrival-3.webp", cat: "sport" },
   { id: "aurum", name: "Aurum Blue", word: "Aurum", desc: "Rose-gold case with a sunburst blue dial.", price: "$6,800", image: "/assets/arrival-4.webp", cat: "classic" },
   { id: "orbit", name: "Orbit Skeleton", word: "Orbit", desc: "Open-worked blue dial showing the movement inside.", price: "$12,900", image: "/assets/arrival-5.webp", cat: "modern" },
-  { id: "naut", name: "Vanta Naut", word: "Vanta", desc: "Our signature model — bold, precise and crafted for collectors.", price: "$745", image: "/assets/arrival-6.webp", cat: "modern" },
+  { id: "naut", name: "Vault Naut", word: "Vault", desc: "Our signature model — bold, precise and crafted for collectors.", price: "$745", image: "/assets/arrival-6.webp", cat: "modern" },
 ];
 
 export const filters: { label: string; value: Category | "all" }[] = [
@@ -53,7 +53,7 @@ export const featuresLeft = [
 export const featuresRight = [
   { icon: "◐", title: "Convenient to Use", text: "Very light and does not feel heavy on the wrist" },
   { icon: "⬡", title: "Safe to Use", text: "Hypoallergenic, safe for every skin type" },
-  { icon: "✳", title: "Vanta Naut", text: "A bold, precision-crafted signature piece" },
+  { icon: "✳", title: "Vault Naut", text: "A bold, precision-crafted signature piece" },
 ];
 
 export const navLinks = [

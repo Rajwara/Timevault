@@ -29,7 +29,7 @@ export default function Arrivals() {
     <section className="arrivals" id="arrivals" aria-labelledby="arrivals-title">
       <div className="container">
         <div className="arrivals__head">
-          <p className="eyebrow" data-reveal="">Explore the {site.name.charAt(0) + site.name.slice(1).toLowerCase()} Shops</p>
+          <p className="eyebrow" data-reveal="">Explore the {site.displayName} Shops</p>
           <h2 className="arrivals__title" id="arrivals-title" data-reveal="">
             <span className="arrivals__title-a">Discover our Newest</span>
             <span>

@@ -13,7 +13,7 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: `${site.name} watches`,
+    name: `${site.displayName} watches`,
     itemListElement: [...products, ...arrivals].map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -22,7 +22,7 @@ export default function Home() {
         name: p.name,
         description: p.desc,
         image: `${siteUrl()}${p.image}`,
-        brand: { "@type": "Brand", name: site.name },
+        brand: { "@type": "Brand", name: site.displayName },
         offers: { "@type": "Offer", priceCurrency: "USD", price: p.price.replace(/[^0-9.]/g, ""), availability: "https://schema.org/InStock" },
       },
     })),

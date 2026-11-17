@@ -73,7 +73,7 @@ export default function ShopFooter() {
       </div>
       <div className={s.copy}>
         <div className={s.wrap}>
-          <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} {site.displayName}. All rights reserved.</span>
           <a href="#top">Back to top ↑</a>
         </div>
       </div>

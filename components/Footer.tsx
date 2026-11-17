@@ -58,7 +58,7 @@ export default function Footer() {
             </a>
           </div>
           <p className="footer__copy">
-            © <Year initial={new Date().getFullYear()} /> {site.name}. All rights reserved.
+            © <Year initial={new Date().getFullYear()} /> {site.displayName}. All rights reserved.
           </p>
         </div>
       </div>

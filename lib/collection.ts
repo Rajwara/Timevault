@@ -16,7 +16,7 @@ export const watches: Watch[] = [
   { id: "pilot", name: "Pilot Chronograph", line: "Leather · 42mm", price: 437, was: 580, image: "/assets/product-1.webp", w: 527, h: 800, cat: "sport" },
   { id: "aurum", name: "Aurum Blue", line: "Rose gold · 40mm", price: 11450, was: 12700, image: "/assets/product-2.webp", w: 496, h: 800, cat: "classic" },
   { id: "racer", name: "Racer Chrono", line: "Perforated strap · 43mm", price: 9000, image: "/assets/product-3.webp", w: 489, h: 800, cat: "sport" },
-  { id: "naut", name: "Vanta Naut", line: "Rubber strap · 41mm", price: 745, was: 930, image: "/assets/product-4.webp", w: 613, h: 800, cat: "modern" },
+  { id: "naut", name: "Vault Naut", line: "Rubber strap · 41mm", price: 745, was: 930, image: "/assets/product-4.webp", w: 613, h: 800, cat: "modern" },
   { id: "field", name: "Field Automatic", line: "NATO strap · 39mm", price: 1290, image: "/assets/feature-watch.webp", w: 721, h: 1400, cat: "classic" },
   { id: "diver", name: "Deep Diver 300", line: "Rubber strap · 44mm", price: 2150, was: 2400, image: "/assets/hero-watch.webp", w: 843, h: 1100, cat: "modern" },
 ];

@@ -3,7 +3,7 @@ import { useSyncExternalStore } from "react";
 /** Bag + wishlist shared across pages and saved in the browser. */
 type State = { bag: string[]; wish: string[] };
 
-const KEY = "vanta-store-v1";
+const KEY = "timevault-store-v1";
 const empty: State = { bag: [], wish: [] };
 let state: State = empty;
 let loaded = false;

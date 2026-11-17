@@ -54,8 +54,9 @@ export default function Nav() {
 
   return (
     <nav className="nav" aria-label="Main">
-      <a href="#top" className="nav__logo" aria-label={`${site.name} home`}>
+      <a href="#top" className="nav__logo" aria-label={`${site.displayName} home`}>
         <Logo />
+        <span className="nav__wordmark" aria-hidden="true">{site.name}</span>
       </a>
       <div className={`nav__links${open ? " is-open" : ""}`} id="nav-links" ref={linksRef}>
         {navLinks.map((l) => (

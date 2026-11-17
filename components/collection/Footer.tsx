@@ -30,7 +30,7 @@ export default function Footer() {
         </nav>
       </div>
       <div className={s.footerBottom}>
-        <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} {site.displayName}. All rights reserved.</span>
         <a href="#top">Back to top ↑</a>
       </div>
       <span className={s.footerWord} aria-hidden="true">{site.name}</span>

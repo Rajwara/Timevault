@@ -19,7 +19,7 @@ export default function ShopPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: `${site.name} — all watches`,
+    name: `${site.displayName} — all watches`,
     itemListElement: products.map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -28,7 +28,7 @@ export default function ShopPage() {
         name: p.name,
         description: p.blurb,
         image: `${siteUrl()}${p.image}`,
-        brand: { "@type": "Brand", name: site.name },
+        brand: { "@type": "Brand", name: site.displayName },
         offers: { "@type": "Offer", priceCurrency: "USD", price: p.price, availability: "https://schema.org/InStock" },
       },
     })),

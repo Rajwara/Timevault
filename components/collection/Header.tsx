@@ -30,7 +30,7 @@ export default function Header() {
           <a href="#about" className={s.navPill}>Our Story</a>
         </div>
 
-        <Link href="/collection" className={s.logo} aria-label={`${site.name} collection`}>{site.name}</Link>
+        <Link href="/collection" className={s.logo} aria-label={`${site.displayName} lookbook`}>{site.name}</Link>
 
         <div className={`${s.navGroup} ${s.navRight}`}>
           <Link href="/shop" className={s.navPill}>Shop</Link>

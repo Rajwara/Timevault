@@ -4,17 +4,15 @@
  * social-share and sitemap URLs. On Vercel it falls back to the deployment URL.
  */
 export const site = {
-  name: "VANTA",
-  title: "VANTA — Precision Wristwatches",
+  /** Wordmark (logos, big background words) */
+  name: "TIME VAULT",
+  /** Name used in sentences */
+  displayName: "Time Vault",
+  title: "Time Vault — Precision Wristwatches",
   description:
-    "Discover iconic watches that blend precision engineering with bold, contemporary design. Every VANTA watch is built to last a lifetime.",
-  domainLabel: "www.vanta.com",
+    "Discover iconic watches that blend precision engineering with bold, contemporary design. Every Time Vault watch is built to last a lifetime.",
+  domainLabel: "www.timevault.com",
   address: ["Your street address", "City, Country"],
-  /**
-   * Optional image for the page loader, e.g. "/loader.gif" (put the file in /public).
-   * Leave empty to use the built-in animated VANTA mark.
-   */
-  loaderImage: "",
   social: {
     instagram: "#",
     x: "#",

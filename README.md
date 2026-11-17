@@ -1,4 +1,4 @@
-# VANTA — Precision Wristwatches
+# Time Vault — Precision Wristwatches
 
 A Next.js (App Router, TypeScript) landing page for a watch brand. Converted from a static HTML/CSS/JS site.
 
@@ -19,16 +19,18 @@ Open http://localhost:3000.
 
 ## Pages
 
-- `/` — the VANTA homepage (dark, animated)
+- `/` — the Time Vault homepage (dark, animated)
 - `/collection` — a light, gallery-style shop page (Orbitron headings, Inter body) with collections, product lines, new arrivals, FAQ and a working bag counter. Content lives in `lib/collection.ts`, styles in `app/collection/collection.module.css`.
 
 - `/shop` — product listing with filters (collection, style, dial colour, strap, price, case size, tags), search, sort, grid/list views, pagination, quick view, wishlist and bag (saved in the browser). Filters live in the URL, so links like `/shop?cat=sport` or `/shop?line=aurum&sort=price-asc` work. Products are in `lib/catalog.ts`.
 
 The **Collections** mega menu (`components/MegaMenu.tsx`, links in `lib/menu.ts`) appears on all three pages.
 
+The full-screen **page loader** is the storefront-loader snippet, used verbatim from `lib/loader.ts` and injected right after `<body>` in `app/layout.tsx`. Its animation is a GIF hosted on another Shopify store; to use your own, put a file in `public/` and change the `url(...)` in `lib/loader.ts`.
+
 ## Customise
 
-- **Brand name, address, social links:** `lib/site.ts`
+- **Brand name (Time Vault), address, social links:** `lib/site.ts` — `name` is the wordmark, `displayName` is used in sentences
 - **Products, arrivals, features, nav links:** `lib/data.ts`
 - **Images:** `public/assets/` (served through `next/image`, so AVIF/WebP and responsive sizes are generated automatically)
 - **Styles:** `app/globals.css`

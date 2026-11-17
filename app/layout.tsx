@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { site, siteUrl } from "@/lib/site";
-import SiteLoader from "@/components/SiteLoader";
+import { loaderHtml } from "@/lib/loader";
 import "./globals.css";
 
 const archivo = localFont({
@@ -21,18 +21,18 @@ const inter = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
-  title: { default: site.title, template: `%s — ${site.name}` },
+  title: { default: site.title, template: `%s — ${site.displayName}` },
   description: site.description,
-  applicationName: site.name,
-  keywords: ["watches", "wristwatches", "chronograph", "luxury watches", "Swiss watches", site.name],
+  applicationName: site.displayName,
+  keywords: ["watches", "wristwatches", "chronograph", "luxury watches", "Swiss watches", site.displayName, "TimeVault"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
-    siteName: site.name,
+    siteName: site.displayName,
     title: site.title,
     description: site.description,
-    images: [{ url: "/assets/feature-watch.webp", width: 721, height: 1400, alt: `${site.name} wristwatch` }],
+    images: [{ url: "/assets/feature-watch.webp", width: 721, height: 1400, alt: `${site.displayName} wristwatch` }],
   },
   twitter: {
     card: "summary_large_image",
@@ -57,7 +57,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
       <body>
-        <SiteLoader />
+        {/* Storefront loader (verbatim snippet). display:contents keeps this wrapper out of the layout. */}
+        <div style={{ display: "contents" }} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: loaderHtml }} />
         <a href="#main" className="skip-link">Skip to content</a>
         {children}
       </body>
