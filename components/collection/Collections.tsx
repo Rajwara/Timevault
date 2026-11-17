@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import WatchCard from "./WatchCard";
 import { ArrowLeft, ArrowRight } from "./Icons";
 import { tabs, watches, type Tab } from "@/lib/collection";
-import s from "@/app/collection/collection.module.css";
+import s from "./collection.module.css";
 
 export function scrollRow(el: HTMLElement | null, dir: 1 | -1) {
   if (!el) return;

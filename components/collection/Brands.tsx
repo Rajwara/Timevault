@@ -5,7 +5,7 @@ import { useState } from "react";
 import WatchCard from "./WatchCard";
 import { ArrowDown, ArrowUp } from "./Icons";
 import { brands, byId } from "@/lib/collection";
-import s from "@/app/collection/collection.module.css";
+import s from "./collection.module.css";
 
 export default function Brands() {
   const [open, setOpen] = useState(0);

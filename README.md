@@ -23,7 +23,7 @@ Open http://localhost:3000.
 | --- | --- | --- |
 | `/` | Homepage (hero with rotating tile deck, products, features, arrivals, stories) | `lib/data.ts` |
 | `/shop` | Product listing: filters, search, sort, grid/list, quick view, wishlist, bag | `lib/catalog.ts` |
-| `/collection` | Lookbook | `lib/collection.ts` |
+| `/about` | About Us — brand story, collections, product lines, new arrivals, FAQ (`/collection` redirects here) | `lib/collection.ts` |
 | `/contact` | Contact & Dubai store locator (map, hours, form) | `lib/stores.ts`, `lib/site.ts` |
 | `/blog`, `/blog/<post>` | The Journal | `lib/blog.ts` |
 | `/faq` | FAQ | `lib/faq-page.ts` |

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ArrowDown, BagIcon, Star } from "./Icons";
 import Price from "@/components/Price";
 import { watches } from "@/lib/collection";
-import s from "@/app/collection/collection.module.css";
+import s from "./collection.module.css";
 
 const heroPicks = ["diver", "aurum", "pilot", "naut"];
 
@@ -16,7 +16,7 @@ export default function Hero() {
 
   return (
     <section className={s.hero} aria-labelledby="hero-title">
-      <p className={`${s.label} ${s.labelCenter} ${s.heroLabel}`}>*The {"Lookbook"}</p>
+      <p className={`${s.label} ${s.labelCenter} ${s.heroLabel}`}>*About Time Vault</p>
       <h1 id="hero-title" className={s.heroTitle}>
         Precision Built<br />To Outlast Time
       </h1>

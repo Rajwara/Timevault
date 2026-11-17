@@ -8,16 +8,16 @@ import Arrivals from "@/components/collection/Arrivals";
 import Faq from "@/components/collection/Faq";
 import { faqs } from "@/lib/collection";
 import RevealObserver from "@/components/RevealObserver";
-import s from "./collection.module.css";
+import s from "@/components/collection/collection.module.css";
 
 export const metadata: Metadata = {
-  title: "The Collection",
-  description: "Explore the full collection: pilot, dress, racing and dive watches with Swiss-calibrated movements and a 5-year warranty.",
-  alternates: { canonical: "/collection" },
-  openGraph: { url: "/collection", images: [{ url: "/assets/hero-watch.webp", width: 843, height: 1100 }] },
+  title: "About Us",
+  description: "The story behind Time Vault: Swiss-calibrated movements, hand-finished cases and four watch families built to be worn every day and kept for a lifetime.",
+  alternates: { canonical: "/about" },
+  openGraph: { url: "/about", images: [{ url: "/assets/hero-watch.webp", width: 843, height: 1100 }] },
 };
 
-export default function CollectionPage() {
+export default function AboutPage() {
   const faqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",

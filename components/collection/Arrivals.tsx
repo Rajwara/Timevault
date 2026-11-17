@@ -7,7 +7,7 @@ import { scrollRow } from "./Collections";
 import { ArrowLeft, ArrowRight } from "./Icons";
 import Price from "@/components/Price";
 import { watches } from "@/lib/collection";
-import s from "@/app/collection/collection.module.css";
+import s from "./collection.module.css";
 
 export default function Arrivals() {
   const row = useRef<HTMLDivElement>(null);

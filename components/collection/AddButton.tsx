@@ -2,7 +2,7 @@
 
 import { useCart } from "./Cart";
 import { BagIcon, CheckIcon } from "./Icons";
-import s from "@/app/collection/collection.module.css";
+import s from "./collection.module.css";
 
 /** Small square "add to bag" button used on product cards. */
 export default function AddButton({ id, name }: { id: string; name: string }) {

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Plus } from "./Icons";
 import { faqs } from "@/lib/collection";
 import { useSelection } from "@/lib/selection";
-import s from "@/app/collection/collection.module.css";
+import s from "./collection.module.css";
 
 export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);

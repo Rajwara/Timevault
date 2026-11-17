@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { BagIcon } from "./Icons";
 import ScrubText from "@/components/ScrubText";
-import s from "@/app/collection/collection.module.css";
+import s from "./collection.module.css";
 
 export default function About() {
   return (

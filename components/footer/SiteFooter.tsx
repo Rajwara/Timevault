@@ -33,9 +33,8 @@ const columns = [
   {
     title: "Company",
     links: [
-      { label: "About Us", href: "/collection#about" },
+      { label: "About Us", href: "/about" },
       { label: "Blog", href: "/blog" },
-      { label: "Lookbook", href: "/collection" },
       { label: "Stores & Contact", href: "/contact" },
     ],
   },

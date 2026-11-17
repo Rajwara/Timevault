@@ -1,7 +1,7 @@
 import { useEffect, useRef, useSyncExternalStore } from "react";
 
 /**
- * Lets menu links pick what the /collection page shows, e.g. ?faq=2 opens that FAQ answer.
+ * Lets menu links pick what the /about page shows, e.g. ?faq=2 opens that FAQ answer.
  * The query string handles arriving from another page; `select()` handles clicks made
  * while already on the page (where the URL may not change).
  */

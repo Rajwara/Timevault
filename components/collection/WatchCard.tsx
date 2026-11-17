@@ -2,7 +2,7 @@ import Image from "next/image";
 import AddButton from "./AddButton";
 import Price from "@/components/Price";
 import type { Watch } from "@/lib/collection";
-import s from "@/app/collection/collection.module.css";
+import s from "./collection.module.css";
 
 /** Dark product card in the homepage style: big word behind the watch, discount badge, price and bag button. */
 export default function WatchCard({ w, size = "md" }: { w: Watch; size?: "md" | "lg" }) {

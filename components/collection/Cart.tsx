@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { useStore } from "@/lib/cart";
 
-/** Kept for the /collection page; the bag itself lives in the shared store (lib/cart.ts). */
+/** Kept for the /about page; the bag itself lives in the shared store (lib/cart.ts). */
 export function CartProvider({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }

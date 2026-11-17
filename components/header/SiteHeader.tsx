@@ -232,7 +232,7 @@ export default function SiteHeader() {
 
           <nav className={s.drawerLinks} aria-label="More">
             <Link href="/" onClick={closeMenu}>Home</Link>
-            <Link href="/collection" onClick={closeMenu}>Lookbook</Link>
+            <Link href="/about" onClick={closeMenu}>About Us</Link>
             <Link href="/blog" onClick={closeMenu}>Journal</Link>
             <Link href="/shop?wish=1" onClick={closeMenu}>Wishlist ({store.wish.length})</Link>
             <Link href="/faq" onClick={closeMenu}>Help &amp; FAQ</Link>
