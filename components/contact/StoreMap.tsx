@@ -3,10 +3,18 @@
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import type * as Leaflet from "leaflet";
 import { directionsUrl, openStatus, serviceLabels, telHref, type Store } from "@/lib/stores";
 import s from "./contact.module.css";
+
+/**
+ * Map tiles. OpenStreetMap's tiles need no key (shown in greyscale via CSS). For heavy traffic, use a provider
+ * with a key, e.g. set NEXT_PUBLIC_MAP_TILES="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=YOUR_KEY"
+ * and NEXT_PUBLIC_MAP_ATTRIBUTION to that provider's credit line.
+ */
+const TILE_URL = process.env.NEXT_PUBLIC_MAP_TILES || "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+const TILE_ATTRIBUTION = process.env.NEXT_PUBLIC_MAP_ATTRIBUTION || '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 type Props = { stores: Store[]; selected: string | null; onSelect: (id: string | null) => void };
 
@@ -22,6 +30,24 @@ export default function StoreMap({ stores, selected, onSelect }: Props) {
   const markers = useRef(new Map<string, Leaflet.Marker>());
   const [ready, setReady] = useState(false);
   const [point, setPoint] = useState<{ x: number; y: number } | null>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [place, setPlace] = useState<{ left: number; top: number; below: boolean; arrow: number } | null>(null);
+
+  // Put the card above the pin, or below it when there's no room under the filter bar; keep it inside the map
+  useLayoutEffect(() => {
+    const card = cardRef.current, wrap = box.current;
+    if (!point || !card || !wrap) { setPlace(null); return; }
+    const W = wrap.clientWidth, H = wrap.clientHeight, w = card.offsetWidth, h = card.offsetHeight;
+    const GAP = 40;                                   // pin radius + arrow
+    const bar = wrap.parentElement?.parentElement?.querySelector<HTMLElement>("[data-filter-bar]");
+    const topLimit = bar ? bar.offsetTop + bar.offsetHeight + 10 : 12;
+    const fitsAbove = point.y - GAP - h >= topLimit;
+    const fitsBelow = point.y + GAP + h <= H - 12;
+    const below = !fitsAbove && fitsBelow;
+    const left = Math.min(Math.max(point.x, w / 2 + 12), W - w / 2 - 12);
+    const top = below ? point.y + GAP : Math.max(point.y - GAP - h, topLimit);
+    setPlace({ left, top, below, arrow: Math.min(Math.max(point.x - left, -w / 2 + 24), w / 2 - 24) });
+  }, [point, selected]);
   const store = stores.find((x) => x.id === selected) ?? null;
 
   const icon = (st: Store, active: boolean) =>
@@ -41,9 +67,8 @@ export default function StoreMap({ stores, selected, onSelect }: Props) {
       if (cancelled || !box.current || map.current) return;
       L.current = lf;
       const m = lf.map(box.current, { zoomControl: false, scrollWheelZoom: false, attributionControl: true }).setView([25.15, 55.25], 11);
-      lf.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: "abcd",
+      lf.tileLayer(TILE_URL, {
+        attribution: TILE_ATTRIBUTION,
         maxZoom: 19,
       }).addTo(m);
       lf.control.zoom({ position: "bottomright" }).addTo(m);
@@ -100,7 +125,16 @@ export default function StoreMap({ stores, selected, onSelect }: Props) {
     };
     if (mk && cluster.current) {
       cluster.current.zoomToShowLayer(mk, () => {
-        m.panInside([store.lat, store.lng], { paddingTopLeft: [180, 360], paddingBottomRight: [180, 40] });
+        // Once the pin is visible, slide the map so the card fits above it, below the filter bar
+        const wrap = box.current;
+        const bar = wrap?.parentElement?.parentElement?.querySelector<HTMLElement>("[data-filter-bar]");
+        const topLimit = bar ? bar.offsetTop + bar.offsetHeight + 10 : 12;
+        const h = cardRef.current?.offsetHeight || 370;
+        const W = wrap?.clientWidth ?? 0, H = wrap?.clientHeight ?? 0;
+        const p = m.latLngToContainerPoint([store.lat, store.lng]);
+        const wantY = Math.min(Math.max(p.y, topLimit + 40 + h), H - 40);
+        const wantX = Math.min(Math.max(p.x, 160), W - 160);
+        if (wantY !== p.y || wantX !== p.x) m.panBy([p.x - wantX, p.y - wantY], { animate: true });
         place();
       });
     }
@@ -125,7 +159,13 @@ export default function StoreMap({ stores, selected, onSelect }: Props) {
       {!ready && <div className={s.mapLoading}>Loading map…</div>}
 
       {store && point && (
-        <div className={s.card} style={{ left: point.x, top: point.y }} role="dialog" aria-label={store.name}>
+        <div
+          ref={cardRef}
+          className={`${s.card} ${place?.below ? s.cardBelow : ""}`}
+          style={{ left: place?.left ?? point.x, top: place?.top ?? point.y, visibility: place ? "visible" : "hidden", "--arrow": `${place?.arrow ?? 0}px` } as CSSProperties}
+          role="dialog"
+          aria-label={store.name}
+        >
           <div className={s.cardImg}>
             <Image src={store.image} alt="" fill sizes="280px" />
             {store.isNew && <span className={s.cardBadge}>New</span>}

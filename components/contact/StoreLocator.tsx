@@ -35,7 +35,7 @@ export default function StoreLocator() {
   return (
     <>
       <div className={s.mapWrap} ref={mapTop}>
-        <form className={s.filterBar} onSubmit={(e) => e.preventDefault()} aria-label="Filter locations">
+        <form className={s.filterBar} data-filter-bar onSubmit={(e) => e.preventDefault()} aria-label="Filter locations">
           <label className={s.select}>
             <span className="sr-only">Location type</span>
             <select value={type} onChange={(e) => setType(e.target.value as typeof type)}>
